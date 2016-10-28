@@ -1,0 +1,46 @@
+buildscript {
+    ext {
+        springBootVersion = '1.4.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        maven {
+            url "http://jcenter.bintray.com"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'bigcommerceFetch'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+dependencies {
+    //compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+    //compile('org.springframework.boot:spring-boot-starter-data-rest')
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+    compile('org.projectlombok:lombok')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.codehaus.groovy:groovy')
+    compile("com.fasterxml.jackson.core:jackson-databind")
+    compile('org.spockframework:spock-core:1.1-groovy-2.4-rc-2')
+    compile('org.spockframework:spock-spring:1.1-groovy-2.4-rc-2')
+
+    //testCompile(group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "1.50.3")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
