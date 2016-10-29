@@ -5,19 +5,18 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import org.springframework.data.mongodb.core.mapping.Document
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Document(collection = "products")
-class Product {
+@Document(collection = "optionSets")
+public class OptionSet {
 
-    Long id
+    Long id;
 
-    String price
-
-    @JsonProperty("search_keywords")
-    String searchKeywords
+    @JsonProperty("option_id")
+    Long optionId;
 
     @JsonProperty("option_set_id")
-    Long optionSetId
+    Long optionSetId;
 
-    @JsonProperty("is_visible")
-    Boolean isVisible;
+    @JsonProperty("values")
+    OptionValue[] values;
+
 }

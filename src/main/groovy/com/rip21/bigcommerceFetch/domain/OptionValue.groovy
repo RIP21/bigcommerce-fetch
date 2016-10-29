@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 class OptionValue {
 
     String label
+
     String value
 
     @JsonProperty("option_value_id")
