@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class OptionValue {
+class SkuOptions {
+
+    @JsonProperty("product_option_id")
+    Long productOptionId
 
     @JsonProperty("option_value_id")
     Long optionValueId
 
-    String label
-
-    String value
 }

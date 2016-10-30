@@ -6,22 +6,22 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Document(collection = "products")
-class Product {
+@Document(collection = "sku")
+class Sku {
 
     @Id
     Long id
 
-    String name
+    @JsonProperty("product_id")
+    Long productId
+
+    String sku
 
     String price
 
-    @JsonProperty("search_keywords")
-    String searchKeywords
+    @JsonProperty("is_purchasing_disabled")
+    Boolean isPurchasingDisabled
 
-    @JsonProperty("option_set_id")
-    Long optionSetId
+    SkuOptions[] options
 
-    @JsonProperty("is_visible")
-    Boolean isVisible;
 }
