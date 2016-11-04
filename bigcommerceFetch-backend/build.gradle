@@ -23,7 +23,7 @@ apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 
 jar {
-    baseName = 'bigcommerceFetch'
+    baseName = 'bigcommerceFetch-backend'
     version = '0.0.1-SNAPSHOT'
 }
 sourceCompatibility = 1.8
