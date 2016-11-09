@@ -10,7 +10,9 @@ public class RestMvcConfig extends RepositoryRestConfigurerAdapter {
 
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
         config.exposeIdsFor(FlattenedProduct.class)
-        config.setDefaultPageSize(5000)
+        config.setDefaultPageSize(100000)
+        config.setMaxPageSize(100000)
+        config.setBasePath("/api")
     }
 
 }

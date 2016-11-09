@@ -29,12 +29,14 @@
     "lodash": "4.16.4",
     "object-assign": "4.1.0",
     "react": "15.3.2",
+    "react-autosuggest": "^7.0.1",
     "react-bootstrap": "^0.30.5",
     "react-dom": "15.3.2",
     "react-redux": "4.4.5",
     "redux": "3.6.0",
+    "redux-promise-middleware": "^4.1.0",
     "redux-thunk": "2.1.0",
-    "reselect": "2.5.4",
+    "reselect": "2.5.4"
   },
   "devDependencies": {
     "autoprefixer": "6.5.1",
@@ -93,9 +95,5 @@
     "webpack-dev-middleware": "1.8.4",
     "webpack-hot-middleware": "2.13.0",
     "webpack-md5-hash": "0.0.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rip21/ololos-blog"
   }
 }

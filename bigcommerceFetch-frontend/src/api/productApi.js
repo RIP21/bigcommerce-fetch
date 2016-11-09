@@ -3,7 +3,7 @@ import axios from 'axios';
 class ProductApi {
 
   static getAll() {
-    return axios.get('/flattenedProducts');
+    return axios.get('api/flattenedProducts');
   }
 }
 
