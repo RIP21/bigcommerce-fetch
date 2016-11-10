@@ -18,7 +18,9 @@
     "prebuild": "npm install && npm run clean-dist && npm run lint && npm run test",
     "build": "babel-node tools/build.js",
     "test": "mocha tools/testSetup.js \"src/**/*.test.js\" --reporter progress",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "styleguide-server": "styleguidist server",
+    "styleguide-build": "styleguidist build"
   },
   "author": "Andrii Los",
   "license": "MIT",
@@ -80,6 +82,7 @@
     "postcss-loader": "1.0.0",
     "prompt": "1.0.0",
     "react-addons-test-utils": "15.3.2",
+    "react-styleguidist": "^4.2.0",
     "redux-devtools-extension": "1.0.0",
     "redux-immutable-state-invariant": "1.2.4",
     "redux-mock-store": "1.2.1",

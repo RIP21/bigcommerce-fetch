@@ -59,9 +59,3 @@ body {
 .react-autosuggest__suggestion--focused {
     background-color: #ddd;
 }
-
-.footer {
-    margin: 9px 20px;
-    font-size: 12px;
-    color: #777;
-}

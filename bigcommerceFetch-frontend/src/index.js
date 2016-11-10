@@ -7,6 +7,7 @@ import {Provider} from "react-redux";
 import {loadProducts} from './actions/productsActions';
 import App from "./containers/App";
 import "./styles/styles.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const store = configureStore();
 store.dispatch(loadProducts());
