@@ -5,7 +5,7 @@ import {render} from "react-dom";
 import configureStore from "./store/configureStore";
 import {Provider} from "react-redux";
 import {loadProducts} from './actions/productsActions';
-import App from "./containers/App";
+import AppRedux from "./containers/AppRedux";
 import "./styles/styles.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
@@ -16,7 +16,7 @@ store.dispatch(loadProducts());
 
 render(
   <Provider store={store}>
-    <App/>
+    <AppRedux/>
   </Provider>,
   document.getElementById('app')
 );

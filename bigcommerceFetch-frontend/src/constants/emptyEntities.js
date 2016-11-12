@@ -1,2 +1,15 @@
-export const POST = {id: '', author: AUTHOR , body: '', description: '', previewPic: '', postdate: '', title: ''};
-export const AUTHOR = {id: '', authorName: ''};
+export const ITEM = {
+  itemId: 0,
+  value: '',
+  sku: '',
+  productName: '',
+  description: '',
+  price: '',
+  skuId: '',
+  optionValueId: '',
+  skuProductOptionId: '',
+  productId: '',
+  quantity: 0,
+  disabled: true,
+  dateCreated: new Date()
+};

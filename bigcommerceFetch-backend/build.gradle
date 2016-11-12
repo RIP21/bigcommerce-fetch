@@ -44,3 +44,13 @@ dependencies {
     // testCompile(group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "1.50.3")
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+
+
+jar {
+    from('../bigcommerceFetch-frontend/dist') {
+        into 'static'
+    }
+}
+
+jar.dependsOn(':bigcommerceFetch-frontend:assemble')

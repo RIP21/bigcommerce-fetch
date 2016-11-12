@@ -12,9 +12,9 @@ export function getById(entries, id) {
   return null;
 }
 
-const postsSelector = state => state.posts;
+const itemsSelector = state => state.items;
 
-export const sortNewPostsFirstSelector = createSelector(
-  postsSelector,
-  (posts) => [...posts].sort((a, b) => new Date(b.postdate) - new Date(a.postdate))
+export const sortItemsByIdSelector = createSelector(
+  itemsSelector,
+  (items) => [...items].sort((a, b) => new Date(a.dateCreated) - new Date(b.dateCreated))
 );

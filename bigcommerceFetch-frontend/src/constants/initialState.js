@@ -1,3 +1,6 @@
+import * as Empty from "./emptyEntities";
+
 export default {
-  products: []
+  products: [],
+  items: [Empty.ITEM]
 };
