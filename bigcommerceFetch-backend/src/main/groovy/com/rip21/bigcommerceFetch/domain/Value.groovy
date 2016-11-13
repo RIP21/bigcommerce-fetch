@@ -1,17 +1,15 @@
 package com.rip21.bigcommerceFetch.domain
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonProperty
 import groovy.transform.EqualsAndHashCode
+import org.springframework.data.annotation.Id
 
 @EqualsAndHashCode
 @JsonIgnoreProperties(ignoreUnknown = true)
-class SkuOptions {
+class Value {
+    @Id
+    Long id
 
-    @JsonProperty("product_option_id")
-    Long productOptionId
-
-    @JsonProperty("option_value_id")
-    Long optionValueId
+    String value
 
 }

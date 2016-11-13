@@ -16,6 +16,9 @@ export default function items(state = initialState.items, action) {
     case types.REMOVE_ITEM:
       return [...state.filter(item => item.itemId !== action.item.itemId)];
 
+    case types.CLEAR_ALL_ITEMS:
+      return initialState.items;
+
     default:
       return state;
   }

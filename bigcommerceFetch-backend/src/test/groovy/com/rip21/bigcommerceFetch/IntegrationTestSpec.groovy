@@ -9,6 +9,7 @@ import com.rip21.bigcommerceFetch.domain.Product
 import com.rip21.bigcommerceFetch.domain.Sku
 import com.rip21.bigcommerceFetch.service.FetchService
 import com.rip21.bigcommerceFetch.service.FlattenerService
+import com.rip21.bigcommerceFetch.service.GenericFetchService
 import com.rip21.bigcommerceFetch.service.SchedulerService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -18,8 +19,12 @@ import spock.lang.Specification
 @SpringBootTest
 class IntegrationTestSpec extends Specification {
 
+
     @Autowired
     FetchService fetchService
+
+    @Autowired
+    GenericFetchService genericFetchService
 
     @Autowired
     FlattenerService flattenerService
@@ -79,6 +84,14 @@ class IntegrationTestSpec extends Specification {
             optionSets.size() == 2
             skus.size() == 11
 
+    }
+
+    def "GenericFetchService works fine"() {
+        when:
+            def products = genericFetchService.fetch(Product.class)
+        then:
+            products.size() > 0
+            products.first() instanceof Product
     }
 
 }

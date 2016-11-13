@@ -45,12 +45,3 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
-
-
-jar {
-    from('../bigcommerceFetch-frontend/dist') {
-        into 'static'
-    }
-}
-
-jar.dependsOn(':bigcommerceFetch-frontend:assemble')

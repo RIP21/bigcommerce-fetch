@@ -59,3 +59,7 @@ body {
 .react-autosuggest__suggestion--focused {
     background-color: #ddd;
 }
+
+#app {
+    margin-bottom: 25px;
+}

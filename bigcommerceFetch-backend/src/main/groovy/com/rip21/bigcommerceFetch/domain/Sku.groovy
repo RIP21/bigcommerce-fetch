@@ -6,7 +6,7 @@ import groovy.transform.EqualsAndHashCode
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
-@EqualsAndHashCode(excludes = ["id"])
+@EqualsAndHashCode
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Document(collection = "sku")
 class Sku {
@@ -18,8 +18,6 @@ class Sku {
     Long productId
 
     String sku
-
-    String price
 
     @JsonProperty("is_purchasing_disabled")
     Boolean isPurchasingDisabled

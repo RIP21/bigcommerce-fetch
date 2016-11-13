@@ -17,8 +17,6 @@ class FlattenerService {
                 productsEntities << new FlattenedProduct(
                         productId: product.id,
                         productName: product.name,
-                        productPrice: product.price,
-                        productSearchKeywords: product.searchKeywords,
                         optionSetId: 0,
                         optionSetOptionId: 0,
                         optionValueId: 0,
@@ -30,8 +28,6 @@ class FlattenerService {
                         productsEntities << new FlattenedProduct(
                                 productId: product.id,
                                 productName: product.name,
-                                productPrice: product.price,
-                                productSearchKeywords: product.searchKeywords,
                                 optionSetId: optionSet.optionSetId,
                                 optionSetOptionId: optionSet.optionId,
                                 optionValueId: 0,
@@ -43,8 +39,6 @@ class FlattenerService {
                             productsEntities << new FlattenedProduct(
                                     productId: product.id,
                                     productName: product.name,
-                                    productPrice: product.price,
-                                    productSearchKeywords: product.searchKeywords,
                                     optionSetId: optionSet.optionSetId,
                                     optionSetOptionId: optionSet.optionId,
                                     optionValueId: value.optionValueId,
@@ -66,7 +60,6 @@ class FlattenerService {
                 productEntity.skuId = skuToMap.id
                 productEntity.skuProductId = skuToMap.productId
                 productEntity.sku = skuToMap.sku
-                productEntity.skuPrice = skuToMap.price
                 productEntity.skuProductOptionId = skuToMap.options.first().productOptionId
             }
 

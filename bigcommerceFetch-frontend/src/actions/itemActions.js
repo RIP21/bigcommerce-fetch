@@ -11,3 +11,7 @@ export function addItem(item) {
 export function updateItem(item) {
   return {type: types.UPDATE_ITEM, item};
 }
+
+export function clearItems() {
+  return {type: types.CLEAR_ALL_ITEMS};
+}

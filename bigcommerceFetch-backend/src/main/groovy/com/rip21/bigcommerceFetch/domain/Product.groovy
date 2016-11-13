@@ -16,14 +16,11 @@ class Product {
 
     String name
 
-    String price
-
-    @JsonProperty("search_keywords")
-    String searchKeywords
-
     @JsonProperty("option_set_id")
     Long optionSetId
 
     @JsonProperty("is_visible")
-    Boolean isVisible;
+    Boolean isVisible
+
+
 }

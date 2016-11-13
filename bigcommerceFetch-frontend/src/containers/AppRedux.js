@@ -6,6 +6,7 @@ import * as itemActions from '../actions/itemActions';
 import objectAssign from 'object-assign';
 import * as Empty from '../constants/emptyEntities';
 import {sortItemsByIdSelector} from "../selector/selectors";
+import jquery from 'jquery';
 
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -160,21 +161,36 @@ class AppRedux extends React.Component {
       query.qty = validItem.quantity;
       queries.push(query);
     });
-    if (queries.length) {
-      let message = "Items with productId's will be added to cart: \n";
-      queries.map(it => message = message + " " + it.product_id + " in quantity " + it.qty + "\n");
-      alert(message);
+
+    if (queries.length > 0) {
+      this.processRequest(queries);
+      alert("All items ADDED to the cart.");
+      this.props.actions.clearItems();
     } else {
-      alert("No items to add to cart");
+      alert("NO items to add to cart");
     }
+
   };
 
+
+  processRequest = (queries) => {
+    if (queries.length > 0) {
+      jquery.ajax({
+        type: 'POST',
+        url: window.location.origin + '/cart.php',
+        data: queries.pop(),
+        success: () => {
+          this.processRequest(queries);
+        }
+      });
+    }
+  };
 
   render() {
     const {suggestions} = this.state;
     return (
-      <div className="container">
-        <table className="table">
+      <div>
+        <table width="100%">
           <thead>
           <tr>
             <th>SKU of Item</th>
@@ -205,8 +221,8 @@ class AppRedux extends React.Component {
           }
           </tbody>
         </table>
-        <button onClick={this.onButtonClick} className="btn btn-primary">Add item</button>
-        <button onClick={this.addToCart} className="btn btn-success">Add all to cart</button>
+        <button style={{marginBottom: "5px"}} onClick={this.onButtonClick} className="btn btn-danger">Add item</button>
+        <button onClick={this.addToCart} className="btn btn-danger">Add all to cart</button>
       </div>
     );
   }
