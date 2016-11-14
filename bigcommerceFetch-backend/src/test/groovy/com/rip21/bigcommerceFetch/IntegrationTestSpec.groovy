@@ -7,10 +7,8 @@ import com.rip21.bigcommerceFetch.dao.SkuRepository
 import com.rip21.bigcommerceFetch.domain.OptionSet
 import com.rip21.bigcommerceFetch.domain.Product
 import com.rip21.bigcommerceFetch.domain.Sku
-import com.rip21.bigcommerceFetch.service.FetchService
-import com.rip21.bigcommerceFetch.service.FlattenerService
-import com.rip21.bigcommerceFetch.service.GenericFetchService
-import com.rip21.bigcommerceFetch.service.SchedulerService
+import com.rip21.bigcommerceFetch.domain.Value
+import com.rip21.bigcommerceFetch.service.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Ignore
@@ -25,6 +23,9 @@ class IntegrationTestSpec extends Specification {
 
     @Autowired
     GenericFetchService genericFetchService
+
+    @Autowired
+    AlternativeFlattenerService alternativeFlattenerService
 
     @Autowired
     FlattenerService flattenerService
@@ -88,7 +89,11 @@ class IntegrationTestSpec extends Specification {
 
     def "GenericFetchService works fine"() {
         when:
+            def skus = genericFetchService.fetch(Sku.class)
             def products = genericFetchService.fetch(Product.class)
+            def values = genericFetchService.fetch(Value.class)
+            def result = alternativeFlattenerService.flatten(skus, products, values)
+            result
         then:
             products.size() > 0
             products.first() instanceof Product

@@ -54,30 +54,5 @@ class GenericFetchService {
     }
 
 
-    private void removeNoneVisibleProducts(List<Product> products) {
-        products.removeAll { !it.isVisible }
-    }
 
-    private void removeDisabledSku(List<Sku> skus) {
-        skus.removeAll { it.isPurchasingDisabled }
-    }
-
-    public List<Product> fetchAllAvailableProducts() {
-        String url = "https://store-2e83t.mybigcommerce.com/api/v2/products.json?limit=250&is_visible=true&availability=available&page="
-        List<Product> products = new LinkedList<>()
-        for (int page = 1; true; page++) {
-            try {
-                def fetchedValues = rt.
-                        getForObject(url + page, Product[].class)
-                if (fetchedValues) {
-                    products.addAll(fetchedValues)
-                } else break
-            } catch (Exception e) {
-                println "Cannot retrieve Products using this link $url$page"
-                e.printStackTrace()
-                failedLinks << url + page
-            }
-        }
-        return products
-    }
 }

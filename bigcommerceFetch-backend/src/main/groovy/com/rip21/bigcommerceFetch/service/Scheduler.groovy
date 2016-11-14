@@ -12,7 +12,7 @@ class Scheduler {
 
     @Scheduled(fixedDelay = 1800000L, initialDelay = 10000L)
     public void fetchData() {
-        schedulerService.fetchData()
+
     }
 
 
