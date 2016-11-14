@@ -17,7 +17,7 @@ import jquery from 'jquery';
 const getSuggestionValue = suggestion => suggestion.sku;
 
 const renderSuggestion = suggestion => (
-  <div>
+  <div style={{textAllign: "left"}}>
     {suggestion.sku}
   </div>
 );
