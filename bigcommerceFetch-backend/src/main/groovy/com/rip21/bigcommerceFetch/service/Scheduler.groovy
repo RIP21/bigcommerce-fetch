@@ -10,10 +10,8 @@ class Scheduler {
     @Autowired
     SchedulerService schedulerService
 
-    @Scheduled(fixedDelay = 1800000L, initialDelay = 10000L)
-    public void fetchData() {
-
+    @Scheduled(fixedDelay = 1800000L, initialDelay = 1000L)
+    public void schedule() {
+        schedulerService.updateItems()
     }
-
-
 }

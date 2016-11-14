@@ -1,7 +1,7 @@
 {
   "name": "bigcommerceFetch-frontend",
   "version": "0.0.1",
-  "description": "Description",
+  "optionValue": "Description",
   "engines": {
     "npm": ">=3"
   },

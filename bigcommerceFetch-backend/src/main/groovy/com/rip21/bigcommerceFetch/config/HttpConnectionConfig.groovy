@@ -9,8 +9,10 @@ import org.apache.http.conn.ssl.TrustSelfSignedStrategy
 import org.apache.http.impl.client.BasicCredentialsProvider
 import org.apache.http.impl.client.HttpClientBuilder
 import org.apache.http.ssl.SSLContexts
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.PropertySource
 import org.springframework.http.client.ClientHttpRequestFactory
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory
 import org.springframework.web.client.RestTemplate
@@ -18,10 +20,14 @@ import org.springframework.web.client.RestTemplate
 import javax.net.ssl.SSLContext
 
 @Configuration
+@PropertySource("classpath:launch.properties")
 class HttpConnectionConfig {
 
-    public static final String LOGIN = "ryan"
-    public static final String API_KEY = "c80e6d15c6cc70986a16175fb29bc1c1821f6fd6"
+    @Value('${bigcommerce.login}')
+    private String LOGIN
+
+    @Value('${bigcommerce.api-key}')
+    private String API_KEY
 
     @Bean
     SSLContext sslContext() {

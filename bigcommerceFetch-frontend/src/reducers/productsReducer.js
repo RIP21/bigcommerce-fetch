@@ -7,7 +7,7 @@ export default function products(state = initialState.products, action) {
     case `${types.LOAD_PRODUCTS}_PENDING`:
       return state;
     case `${types.LOAD_PRODUCTS}_FULFILLED`:
-      return action.payload.data._embedded.flattenedProducts;
+      return action.payload.data._embedded.flatSkus;
     case `${types.LOAD_PRODUCTS}_REJECTED`:
       return state;
 

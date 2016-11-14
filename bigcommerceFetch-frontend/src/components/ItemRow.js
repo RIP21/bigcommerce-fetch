@@ -35,8 +35,7 @@ const ItemRow = ({
         inputProps={inputProps}
       /></td>
       <td>{item.productName}</td>
-      <td>{item.description}</td>
-      <td>${item.price}</td>
+      <td>{item.optionValue}</td>
       <td><input disabled={item.disabled} min="0" max="100000" type="number" onChange={(event) => onChange(event, item)}
                  value={item.quantity}/></td>
       <td>

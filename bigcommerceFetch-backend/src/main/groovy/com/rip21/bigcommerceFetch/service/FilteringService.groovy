@@ -1,18 +1,15 @@
 package com.rip21.bigcommerceFetch.service
 
-import com.rip21.bigcommerceFetch.domain.Product
-import com.rip21.bigcommerceFetch.domain.Sku
+import com.rip21.bigcommerceFetch.domain.FlatSku
 import org.springframework.stereotype.Service
 
 @Service
 class FilteringService {
 
-    private void removeNoneVisibleProducts(List<Product> products) {
-        products.removeAll { !it.isVisible }
-    }
-
-    private void removeDisabledSku(List<Sku> skus) {
-        skus.removeAll { it.isPurchasingDisabled }
+    List<FlatSku> filterInvalidRecords(List<FlatSku> list) {
+        List<FlatSku> filtered = new LinkedList<>(list);
+        filtered.retainAll { it.skuOptionValueId && it.productId && !it.isPurchasingDisabled && it.isVisible }
+        return filtered
     }
 
 }

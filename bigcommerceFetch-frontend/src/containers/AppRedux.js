@@ -35,10 +35,9 @@ class AppRedux extends React.Component {
   getSuggestions = value => {
     const inputValue = value.trim().toUpperCase();
     const inputLength = inputValue.length;
-    return inputLength === 0 ? [] : this.props.products
-      .filter(product => product.sku != null && product.productPrice != "0.0000" && product.skuPrice != "0.0000")
-      .filter(product =>
-      product.sku.toUpperCase().slice(0, inputLength) === inputValue).slice(0, 10);
+    return inputLength === 0 ? [] : this.props.products.filter(product => product.sku.includes(value)).slice(0, 10);
+    /*  .filter(product =>
+     product.sku.toUpperCase().slice(0, inputLength) === inputValue).slice(0, 10);*/
   };
 
 
@@ -52,9 +51,6 @@ class AppRedux extends React.Component {
     this.props.actions.updateItem(changedItem);
   };
 
-  getPrice = (product) => {
-    return product.skuPrice && product.skuPrice != "0.0000" ? product.skuPrice : product.productPrice;
-  };
 
   onBlur = (item) => {
     const {value} = item;
@@ -63,45 +59,34 @@ class AppRedux extends React.Component {
       const matchedProduct = products.find(product => product.sku == value);
       if (matchedProduct) {
         const changedItem = objectAssign({}, item, {
+          disabled: false,
+
           sku: matchedProduct.sku,
-          productName: matchedProduct.productName,
-          description: matchedProduct.optionValue,
-          price: this.getPrice(matchedProduct),
           skuId: matchedProduct.skuId,
-          optionValueId: matchedProduct.optionValueId,
+          optionValue: matchedProduct.value,
+          skuOptionValueId: matchedProduct.skuOptionValueId,
           skuProductOptionId: matchedProduct.skuProductOptionId,
           productId: matchedProduct.productId,
-          disabled: false
+          productName: matchedProduct.productName
         });
         this.props.actions.updateItem(changedItem);
-      } else {
-        const changedItem = objectAssign({}, item, {
-          sku: '',
-          productName: '',
-          description: '',
-          price: '',
-          skuId: '',
-          optionValueId: '',
-          skuProductOptionId: '',
-          productId: '',
-          disabled: true
-        });
-        this.props.actions.updateItem(changedItem);
-      }
-    } else {
-      const changedItem = objectAssign({}, item, {
-        sku: '',
-        productName: '',
-        description: '',
-        price: '',
-        skuId: '',
-        optionValueId: '',
-        skuProductOptionId: '',
-        productId: '',
-        disabled: true
-      });
-      this.props.actions.updateItem(changedItem);
-    }
+      } else this.disableAndClean(item);
+    } else this.disableAndClean(item);
+  };
+
+  disableAndClean = (item) => {
+    const changedItem = objectAssign({}, item, {
+      disabled: true,
+
+      sku: '',
+      skuId: '',
+      skuOptionValueId: '',
+      skuProductOptionId: '',
+      productId: '',
+      productName: '',
+      optionValue: ''
+    });
+    this.props.actions.updateItem(changedItem);
   };
 
 
@@ -122,16 +107,16 @@ class AppRedux extends React.Component {
 
   onSuggestionSelected = (event, suggestion, item) => {
     const changedItem = objectAssign({}, item, {
+      disabled: false,
       value: suggestion.sku,
+
       sku: suggestion.sku,
-      productName: suggestion.productName,
-      description: suggestion.optionValue,
-      price: this.getPrice(suggestion),
       skuId: suggestion.skuId,
-      optionValueId: suggestion.optionValueId,
+      skuOptionValueId: suggestion.skuOptionValueId,
       skuProductOptionId: suggestion.skuProductOptionId,
       productId: suggestion.productId,
-      disabled: false
+      productName: suggestion.productName,
+      optionValue: suggestion.value
     });
     this.props.actions.updateItem(changedItem);
   };
@@ -156,7 +141,7 @@ class AppRedux extends React.Component {
     items.filter(item => item.quantity != 0 && item.disabled != true).map(validItem => {
       let query = {};
       query.action = "add";
-      query["attribute[" + validItem.skuProductOptionId + "]"] = validItem.optionValueId;
+      query["attribute[" + validItem.skuProductOptionId + "]"] = validItem.skuOptionValueId;
       query.product_id = validItem.productId;
       query.qty = validItem.quantity;
       queries.push(query);
@@ -196,7 +181,6 @@ class AppRedux extends React.Component {
             <th>SKU of Item</th>
             <th>Product Name:</th>
             <th>Description:</th>
-            <th>Price:</th>
             <th>Quantity:</th>
             <th/>
           </tr>

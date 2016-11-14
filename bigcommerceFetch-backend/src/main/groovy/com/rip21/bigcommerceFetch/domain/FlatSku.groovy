@@ -5,16 +5,23 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @EqualsAndHashCode(excludes = ["id"])
-@Document(collection = "altFlatProducts")
-class AlternedFlattenedProduct {
+@Document(collection = "flatSkus")
 
-    AlternedFlattenedProduct(Sku sku, Product product, Value value) {
+class FlatSku {
+
+    FlatSku() {
+
+    }
+
+    FlatSku(Sku sku, Product product, Value value) {
+        this.id = sku.id
         this.skuid = sku.id
         this.skuProductId = sku.productId
         this.sku = sku.sku
         this.isPurchasingDisabled = sku.isPurchasingDisabled
-        this.skuOptionValueId = sku.options.first().optionValueId
-        this.skuProductOptionId = sku.options.first().productOptionId
+        if (sku.options && product && value) {
+            this.skuOptionValueId = sku.options[0].optionValueId
+            this.skuProductOptionId = sku.options[0].productOptionId
 
         this.productId = product.id
         this.isVisible = product.isVisible
@@ -22,12 +29,13 @@ class AlternedFlattenedProduct {
 
         this.optionValueId = value.id
         this.value = value.value
+        }
     }
 
     //SKU
 
     @Id
-    String id
+    Long id
 
     Long skuid
 

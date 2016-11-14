@@ -1,15 +1,15 @@
 export const ITEM = {
   itemId: 0,
   value: '',
+  quantity: 1,
+  disabled: true,
+  dateCreated: new Date(),
+
   sku: '',
-  productName: '',
-  description: '',
-  price: '',
   skuId: '',
-  optionValueId: '',
+  skuOptionValueId: '',
   skuProductOptionId: '',
   productId: '',
-  quantity: 0,
-  disabled: true,
-  dateCreated: new Date()
+  productName: '',
+  optionValue: ''
 };
