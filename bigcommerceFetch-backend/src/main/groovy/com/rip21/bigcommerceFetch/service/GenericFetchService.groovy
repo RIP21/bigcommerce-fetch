@@ -25,8 +25,7 @@ class GenericFetchService {
                 items.addAll(fetchedItems)
             } else break
         }
-        items + refetch(aClass)
-        return items
+        return items + refetch(aClass)
     }
 
     private Object doRequest(String url, Class aClass) {

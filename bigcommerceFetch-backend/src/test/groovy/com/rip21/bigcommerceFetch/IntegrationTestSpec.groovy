@@ -20,6 +20,7 @@ import spock.lang.Stepwise
 @SpringBootTest
 class IntegrationTestSpec extends Specification {
 
+
     @Autowired
     GenericFetchService genericFetchService
 
@@ -43,6 +44,29 @@ class IntegrationTestSpec extends Specification {
 
     @Autowired
     FlatSkuRepository flatSkuRepository
+
+    def "Refetch method works as expected"() {
+        given: "Two failed links"
+            genericFetchService.failedLinks = ["https://store-2e83t.mybigcommerce.com/api/v2/products.json?limit=10&page=1",
+                                               "https://store-2e83t.mybigcommerce.com/api/v2/products.json?limit=10&page=2"]
+        when: "Called refetch with proper class for the links"
+            def result = genericFetchService.refetch(Product.class)
+        then: "Refetch 20 items as expected"
+            result.size() == 20
+    }
+
+    def "Refetch with fetch work correctly adding results of one to another"() {
+        given: "Size without failed links"
+            def sizeWithoutFailedLinks = genericFetchService.fetch(Product.class).size()
+        and: "Two failed links"
+            genericFetchService.failedLinks = ["https://store-2e83t.mybigcommerce.com/api/v2/products.json?limit=10&page=1",
+                                               "https://store-2e83t.mybigcommerce.com/api/v2/products.json?limit=10&page=2"]
+
+        when: "Called fetch and two failedLinks are added, so they should be refetched"
+            def result = genericFetchService.fetch(Product.class)
+        then: "Refetched 20 items expected, so from original size it must grow to 20 products"
+            sizeWithoutFailedLinks + 20 == result.size()
+    }
 
     def "GenericFetchService works fine"() {
         setup:
@@ -90,14 +114,5 @@ class IntegrationTestSpec extends Specification {
             flatSkuRepository.save(result)
     }
 
-    def "Refetch method works as expected"() {
-        given: "Two failed links"
-            genericFetchService.failedLinks = ["https://store-2e83t.mybigcommerce.com/api/v2/products.json?limit=10&page=1",
-                                               "https://store-2e83t.mybigcommerce.com/api/v2/products.json?limit=10&page=2"]
-        when: "Called refetch with proper class for the links"
-            def result = genericFetchService.refetch(Product.class)
-        then: "Refetch 20 items as expected"
-            result.size() == 20
-    }
 
 }

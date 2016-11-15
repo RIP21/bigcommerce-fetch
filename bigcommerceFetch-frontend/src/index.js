@@ -5,7 +5,7 @@ import {render} from "react-dom";
 import configureStore from "./store/configureStore";
 import {Provider} from "react-redux";
 import {loadProducts} from './actions/productsActions';
-import AppRedux from "./containers/AppRedux";
+import App from "./containers/App";
 import "./styles/styles.css";
 
 if (process.env.NODE_ENV !== 'production') {
@@ -20,7 +20,7 @@ store.dispatch(loadProducts());
 
 render(
   <Provider store={store}>
-    <AppRedux/>
+    <App/>
   </Provider>,
   document.getElementById('app')
 );

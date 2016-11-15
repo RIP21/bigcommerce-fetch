@@ -5,7 +5,6 @@ import ModalLoading from '../components/ModalLoading';
 import {bindActionCreators} from 'redux';
 import * as itemActions from '../actions/itemActions';
 import objectAssign from 'object-assign';
-import * as Empty from '../constants/emptyEntities';
 import {sortItemsByIdSelector} from "../selector/selectors";
 import jquery from 'jquery';
 
@@ -15,20 +14,24 @@ import jquery from 'jquery';
 // When suggestion is clicked, Autosuggest needs to populate the input element
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
 // input value for every given suggestion.
+
 const getSuggestionValue = suggestion => suggestion.sku;
 
+/*eslint-disable react/no-multi-comp*/
 const renderSuggestion = suggestion => (
   <div>
     {suggestion.sku}
   </div>
 );
 
-class AppRedux extends React.Component {
+
+class App extends React.Component {
 
   constructor(props, context) {
     super(props, context);
 
     this.state = {
+      value: "",
       show: false,
       now: 0,
       totalRequests: 0,
@@ -45,20 +48,20 @@ class AppRedux extends React.Component {
     this.setState({show: false});
   };
 
+  onQuantityChange = (event, item) => {
+    const changedItem = objectAssign({}, item, {quantity: event.target.value});
+    this.props.actions.updateItem(changedItem);
+  };
+
+
   getSuggestions = value => {
     const inputValue = value.trim().toUpperCase();
     const inputLength = inputValue.length;
     return inputLength === 0 ? [] : this.props.products.filter(product => product.sku.includes(inputValue)).slice(0, 10);
   };
 
-
   onAutosuggestChange = (event, newValue, item) => {
     const changedItem = objectAssign({}, item, {value: newValue});
-    this.props.actions.updateItem(changedItem);
-  };
-
-  onQuantityChange = (event, item) => {
-    const changedItem = objectAssign({}, item, {quantity: event.target.value});
     this.props.actions.updateItem(changedItem);
   };
 
@@ -67,11 +70,12 @@ class AppRedux extends React.Component {
     const {value} = item;
     const {products} = this.props;
     if (value && products) {
-      const matchedProduct = products.find(product => product.sku == value);
+      const matchedProduct = products.find(product => product.sku == value.toUpperCase());
       if (matchedProduct) {
         const changedItem = objectAssign({}, item, {
           disabled: false,
 
+          value: value.toUpperCase(),
           sku: matchedProduct.sku,
           skuId: matchedProduct.skuId,
           optionValue: matchedProduct.value,
@@ -130,11 +134,11 @@ class AppRedux extends React.Component {
       optionValue: suggestion.value
     });
     this.props.actions.updateItem(changedItem);
+    this.props.actions.addNewRow();
   };
 
   onAddButtonClick = () => {
-    const newItem = objectAssign({}, Empty.ITEM, {itemId: this.generateItemId(), dateCreated: new Date()});
-    this.props.actions.addItem(newItem);
+    this.props.actions.addNewRow();
   };
 
   onRemoveButtonClick = (item) => {
@@ -142,9 +146,7 @@ class AppRedux extends React.Component {
     if (items.length != 1) actions.removeItem(item);
   };
 
-  generateItemId() {
-    return Math.max.apply(Math, this.props.items.map(item => item.itemId)) + 1;
-  }
+
 
   addAllToCart = () => {
     const {items} = this.props;
@@ -197,7 +199,7 @@ class AppRedux extends React.Component {
 
   visualizeProgress = (queries) => {
     const {totalRequests} = this.state;
-    this.setState({now: (((totalRequests - queries.length) / totalRequests) * 100)});
+    this.setState({now: Math.floor((((totalRequests - queries.length) / totalRequests) * 100))});
   };
 
   render() {
@@ -247,7 +249,7 @@ class AppRedux extends React.Component {
 }
 
 
-AppRedux.propTypes = {
+App.propTypes = {
   products: PropTypes.array.isRequired,
   items: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
@@ -267,4 +269,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppRedux);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
