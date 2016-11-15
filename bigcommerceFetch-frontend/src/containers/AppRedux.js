@@ -1,6 +1,7 @@
 import React, {PropTypes} from "react";
 import {connect} from 'react-redux';
 import ItemRow from '../components/ItemRow';
+import ModalLoading from '../components/ModalLoading';
 import {bindActionCreators} from 'redux';
 import * as itemActions from '../actions/itemActions';
 import objectAssign from 'object-assign';
@@ -17,7 +18,7 @@ import jquery from 'jquery';
 const getSuggestionValue = suggestion => suggestion.sku;
 
 const renderSuggestion = suggestion => (
-  <div style={{textAllign: "left"}}>
+  <div>
     {suggestion.sku}
   </div>
 );
@@ -28,16 +29,26 @@ class AppRedux extends React.Component {
     super(props, context);
 
     this.state = {
-      suggestions: [],
+      show: false,
+      now: 0,
+      totalRequests: 0,
+      suggestions: []
     };
   }
+
+  onModalRedirect = () => {
+    this.setState({show: false});
+    window.location = "/cart.php";
+  };
+
+  onModalClose = () => {
+    this.setState({show: false});
+  };
 
   getSuggestions = value => {
     const inputValue = value.trim().toUpperCase();
     const inputLength = inputValue.length;
-    return inputLength === 0 ? [] : this.props.products.filter(product => product.sku.includes(value)).slice(0, 10);
-    /*  .filter(product =>
-     product.sku.toUpperCase().slice(0, inputLength) === inputValue).slice(0, 10);*/
+    return inputLength === 0 ? [] : this.props.products.filter(product => product.sku.includes(inputValue)).slice(0, 10);
   };
 
 
@@ -46,13 +57,13 @@ class AppRedux extends React.Component {
     this.props.actions.updateItem(changedItem);
   };
 
-  onChange = (event, item) => {
+  onQuantityChange = (event, item) => {
     const changedItem = objectAssign({}, item, {quantity: event.target.value});
     this.props.actions.updateItem(changedItem);
   };
 
 
-  onBlur = (item) => {
+  onAutosuggestBlur = (item) => {
     const {value} = item;
     const {products} = this.props;
     if (value && products) {
@@ -121,8 +132,8 @@ class AppRedux extends React.Component {
     this.props.actions.updateItem(changedItem);
   };
 
-  onButtonClick = () => {
-    const newItem = objectAssign({}, Empty.ITEM, {itemId: this.generateId(), dateCreated: new Date()});
+  onAddButtonClick = () => {
+    const newItem = objectAssign({}, Empty.ITEM, {itemId: this.generateItemId(), dateCreated: new Date()});
     this.props.actions.addItem(newItem);
   };
 
@@ -131,12 +142,28 @@ class AppRedux extends React.Component {
     if (items.length != 1) actions.removeItem(item);
   };
 
-  generateId() {
+  generateItemId() {
     return Math.max.apply(Math, this.props.items.map(item => item.itemId)) + 1;
   }
 
-  addToCart = () => {
+  addAllToCart = () => {
     const {items} = this.props;
+    let queue = this.buildRequestsQueue(items);
+    if (queue.length > 0) {
+      this.showModal();
+      this.setState({totalRequests: queue.length});
+      this.processRequest(queue);
+      this.props.actions.clearItems();
+    } else {
+      alert("NO items to add to cart");
+    }
+  };
+
+  showModal = () => {
+    this.setState({show: true});
+  };
+
+  buildRequestsQueue = (items) => {
     let queries = [];
     items.filter(item => item.quantity != 0 && item.disabled != true).map(validItem => {
       let query = {};
@@ -146,19 +173,12 @@ class AppRedux extends React.Component {
       query.qty = validItem.quantity;
       queries.push(query);
     });
-
-    if (queries.length > 0) {
-      this.processRequest(queries);
-      alert("All items ADDED to the cart.");
-      this.props.actions.clearItems();
-    } else {
-      alert("NO items to add to cart");
-    }
-
+    return queries;
   };
 
 
   processRequest = (queries) => {
+    this.visualizeProgress(queries);
     if (queries.length > 0) {
       jquery.ajax({
         type: 'POST',
@@ -166,15 +186,28 @@ class AppRedux extends React.Component {
         data: queries.pop(),
         success: () => {
           this.processRequest(queries);
+        },
+        error: () => {
+          alert("There is problem adding items to the cart, please try again.");
+          this.onModalClose();
         }
       });
     }
   };
 
+  visualizeProgress = (queries) => {
+    const {totalRequests} = this.state;
+    this.setState({now: (((totalRequests - queries.length) / totalRequests) * 100)});
+  };
+
   render() {
-    const {suggestions} = this.state;
+    const {suggestions, now, show} = this.state;
     return (
       <div>
+        <ModalLoading now={now}
+                      show={show}
+                      onClose={this.onModalClose}
+                      onRedirect={this.onModalRedirect}/>
         <table width="100%">
           <thead>
           <tr>
@@ -196,17 +229,18 @@ class AppRedux extends React.Component {
               renderSuggestion={renderSuggestion}
               onSuggestionSelected={this.onSuggestionSelected}
               item={item}
-              onChange={this.onChange}
+              onChange={this.onQuantityChange}
               onAutosuggestChange={this.onAutosuggestChange}
-              onBlur={this.onBlur}
+              onBlur={this.onAutosuggestBlur}
               onRemoveButtonClick={this.onRemoveButtonClick}
             />
           )
           }
           </tbody>
         </table>
-        <button style={{marginBottom: "5px"}} onClick={this.onButtonClick} className="btn btn-danger">Add item</button>
-        <button onClick={this.addToCart} className="btn btn-danger">Add all to cart</button>
+        <button style={{marginBottom: "5px"}} onClick={this.onAddButtonClick} className="btn btn-danger">Add item
+        </button>
+        <button onClick={this.addAllToCart} className="btn btn-danger">Add all to cart</button>
       </div>
     );
   }
