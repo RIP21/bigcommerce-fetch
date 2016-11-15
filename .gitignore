@@ -25,3 +25,4 @@ target/
 password.txt
 
 
+/bigcommerceFetch-backend/src/main/resources/launch.properties
