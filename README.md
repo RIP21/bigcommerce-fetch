@@ -1,7 +1,7 @@
 # bigcommerce-fetch
 
 ## About backend
-It's a simple application, backend part is written in Groovy using Spring Boot with Spring Data REST, Spring Data itself, also uses some simple scheduling which is also included in Spring Boot. 
+It's a simple application for quering API of Bigcommerce platform and flatten it's results for frontend consumer, backend part is written in Groovy using Spring Boot with Spring Data REST, Spring Data itself, also uses some simple scheduling which is also included in Spring Boot. 
 For unit testing there is a embeded MongoDB and Spock Framework.
 
 ## About frontend
