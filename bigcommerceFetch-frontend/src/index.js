@@ -7,10 +7,10 @@ import {Provider} from "react-redux";
 import {loadProducts} from './actions/productsActions';
 import App from "./containers/App";
 import "./styles/styles.css";
-
-if (process.env.NODE_ENV !== 'production') {
-  module.exports = require('../node_modules/bootstrap/dist/css/bootstrap.min.css');
-}
+//
+// if (process.env.NODE_ENV !== 'production') {
+//   module.exports = require('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+// }
 
 
 const store = configureStore();

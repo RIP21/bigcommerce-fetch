@@ -22,5 +22,8 @@ class Product {
     @JsonProperty("is_visible")
     Boolean isVisible
 
+    @JsonProperty("primary_image")
+    ProductImage productImage
+
 
 }

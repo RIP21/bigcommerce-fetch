@@ -24,7 +24,32 @@ const ItemRow = ({
 
   return (
     <tr>
-      <td><Autosuggest
+  < td >
+  {item.tinyImg ?
+<
+  div >
+  < div
+  id = "showthumb" >
+    < img
+  src = {item.tinyImg
+}
+  className = "skuimg" / >
+    < / div >
+    < div
+  className = "thumb" >
+    < img
+  src = {item.standardImg
+}
+  className = "img-thumbnail skuthumb" / >
+    < / div >
+    < / div >
+: <
+  div / >
+}
+</
+  td >
+  < td
+  className = "autosuggest-cell" > < Autosuggest
         id={item.itemId.toString()}
         suggestions={suggestions}
         onSuggestionsFetchRequested={onSuggestionsFetchRequested}
@@ -34,12 +59,37 @@ const ItemRow = ({
         onSuggestionSelected={(event, {suggestion}) => onSuggestionSelected(event, suggestion, item)}
         inputProps={inputProps}
       /></td>
-      <td>{item.productName}</td>
-      <td>{item.optionValue}</td>
-      <td><input disabled={item.disabled} min="0" max="100000" type="number" onChange={(event) => onChange(event, item)}
+          < td
+  className = "text-cell" > {item.productName
+}</
+  td >
+  < td
+  className = "text-cell" > {item.optionValue
+}</
+  td >
+  < td
+  className = "qty" > < input
+  className = "qty-textbox"
+  disabled = {item.disabled
+}
+  min = "0"
+  max = "100000"
+  type = "number"
+  onChange = {(event) =
+>
+  onChange(event, item)
+}
                  value={item.quantity}/></td>
       <td>
-        <button className="btn btn-danger" onClick={() => onRemoveButtonClick(item)}>Remove item</button>
+  < button
+  id = "cart-btn"
+  className = "btn btn-danger"
+  onClick = {() =
+>
+  onRemoveButtonClick(item)
+}>
+  Remove
+  item < / button >
       </td>
     </tr>
   );

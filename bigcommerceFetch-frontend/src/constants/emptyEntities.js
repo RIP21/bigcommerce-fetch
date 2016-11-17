@@ -11,5 +11,7 @@ export const ITEM = {
   skuProductOptionId: '',
   productId: '',
   productName: '',
-  optionValue: ''
+  optionValue: '',
+  tinyImg: '',
+  standardImg: ''
 };

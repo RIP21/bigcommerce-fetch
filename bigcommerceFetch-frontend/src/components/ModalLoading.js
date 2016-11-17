@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import Button from 'react-bootstrap/lib/Button';
 import Modal from 'react-bootstrap/lib/Modal';
 import ModalHeader from 'react-bootstrap/lib/ModalHeader';
 import ModalTitle from 'react-bootstrap/lib/ModalTitle';
@@ -20,8 +19,20 @@ const ModalLoading = ({show, now, onClose, onRedirect}) => {
         <ProgressBar active label={`${now}%`} striped bsStyle={isDone ? "success" : "danger"} now={now}/>
       </ModalBody>
       <Modal.Footer>
-        { isDone ? <Button bsStyle="danger" onClick={onRedirect}>Go to cart</Button> :
-          <Button bsStyle="danger" disabled>Go to cart</Button>
+    {isDone ? < button
+  id = "cart-btn"
+  onClick = {onRedirect}
+  className = "btn btn-danger" > Go
+  to
+  cart < / button >
+:
+<
+  button
+  id = "cart-btn"
+  disabled = "disabled"
+  className = "btn btn-danger" > Go
+  to
+  cart < / button >
         }
       </Modal.Footer>
     </Modal>

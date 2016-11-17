@@ -45,6 +45,7 @@ class IntegrationTestSpec extends Specification {
     @Autowired
     FlatSkuRepository flatSkuRepository
 
+
     def "Refetch method works as expected"() {
         given: "Two failed links"
             genericFetchService.failedLinks = ["https://store-2e83t.mybigcommerce.com/api/v2/products.json?limit=10&page=1",

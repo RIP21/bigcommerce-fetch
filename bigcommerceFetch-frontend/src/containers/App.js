@@ -82,7 +82,9 @@ class App extends React.Component {
           skuOptionValueId: matchedProduct.skuOptionValueId,
           skuProductOptionId: matchedProduct.skuProductOptionId,
           productId: matchedProduct.productId,
-          productName: matchedProduct.productName
+          productName: matchedProduct.productName,
+          tinyImg: matchedProduct.tinyImg,
+          standardImg: matchedProduct.standardImg
         });
         this.props.actions.updateItem(changedItem);
       } else this.disableAndClean(item);
@@ -99,7 +101,9 @@ class App extends React.Component {
       skuProductOptionId: '',
       productId: '',
       productName: '',
-      optionValue: ''
+      optionValue: '',
+      tinyImg: '',
+      standardImg: ''
     });
     this.props.actions.updateItem(changedItem);
   };
@@ -131,7 +135,9 @@ class App extends React.Component {
       skuProductOptionId: suggestion.skuProductOptionId,
       productId: suggestion.productId,
       productName: suggestion.productName,
-      optionValue: suggestion.value
+      optionValue: suggestion.value,
+      tinyImg: suggestion.tinyImg,
+      standardImg: suggestion.standardImg
     });
     this.props.actions.updateItem(changedItem);
     this.props.actions.addNewRow();
@@ -145,7 +151,6 @@ class App extends React.Component {
     const {items, actions} = this.props;
     if (items.length != 1) actions.removeItem(item);
   };
-
 
 
   addAllToCart = () => {
@@ -210,14 +215,18 @@ class App extends React.Component {
                       show={show}
                       onClose={this.onModalClose}
                       onRedirect={this.onModalRedirect}/>
-        <table width="100%">
+<
+  table
+  id = "order-form" >
           <thead>
           <tr>
-            <th>SKU of Item</th>
-            <th>Product Name:</th>
-            <th>Description:</th>
-            <th>Quantity:</th>
             <th/>
+    < th > Item # (SKU) < / th >
+  < th > Product
+  name < / th >
+  < th > Description < / th >
+  < th > Quantity < / th >
+  < th / >
           </tr>
           </thead>
           <tbody>
@@ -240,10 +249,25 @@ class App extends React.Component {
           }
           </tbody>
         </table>
-        <button style={{marginBottom: "5px"}} onClick={this.onAddButtonClick} className="btn btn-danger">Add item
-        </button>
-        <button onClick={this.addAllToCart} className="btn btn-danger">Add all to cart</button>
-      </div>
+  < div
+  id = "buttons-block" >
+    < button
+  id = "cart-btn"
+  onClick = {this.onAddButtonClick
+}
+  className = "btn btn-danger" > Add
+  item < / button >
+  < br / >
+  < button
+  id = "cart-btn"
+  onClick = {this.addAllToCart
+}
+  className = "btn btn-danger" > Add
+  all
+  to
+  cart < / button >
+  < / div >
+  < / div >
     );
   }
 }

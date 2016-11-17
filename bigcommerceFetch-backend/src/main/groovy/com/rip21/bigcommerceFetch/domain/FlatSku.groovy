@@ -26,6 +26,8 @@ class FlatSku {
         this.productId = product.id
         this.isVisible = product.isVisible
         this.productName = product.name
+            this.tinyImg = product?.productImage?.tinyImg
+            this.standardImg = product?.productImage?.standardImg
 
         this.optionValueId = value.id
         this.value = value.value
@@ -56,6 +58,10 @@ class FlatSku {
     String productName
 
     Boolean isVisible
+
+    String tinyImg
+
+    String standardImg
 
     //OPTION_VALUE
 
