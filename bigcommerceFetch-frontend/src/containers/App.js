@@ -215,18 +215,15 @@ class App extends React.Component {
                       show={show}
                       onClose={this.onModalClose}
                       onRedirect={this.onModalRedirect}/>
-<
-  table
-  id = "order-form" >
+        <table id="order-form">
           <thead>
           <tr>
             <th/>
-    < th > Item # (SKU) < / th >
-  < th > Product
-  name < / th >
-  < th > Description < / th >
-  < th > Quantity < / th >
-  < th / >
+            <th>Item # (SKU)</th>
+            <th>Product name</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th/>
           </tr>
           </thead>
           <tbody>
@@ -249,25 +246,12 @@ class App extends React.Component {
           }
           </tbody>
         </table>
-  < div
-  id = "buttons-block" >
-    < button
-  id = "cart-btn"
-  onClick = {this.onAddButtonClick
-}
-  className = "btn btn-danger" > Add
-  item < / button >
-  < br / >
-  < button
-  id = "cart-btn"
-  onClick = {this.addAllToCart
-}
-  className = "btn btn-danger" > Add
-  all
-  to
-  cart < / button >
-  < / div >
-  < / div >
+        <div id="buttons-block">
+          <button id="cart-btn" onClick={this.onAddButtonClick} className="btn btn-danger">Add item</button>
+          <br/>
+          <button id="cart-btn" onClick={this.addAllToCart} className="btn btn-danger">Add all to cart</button>
+        </div>
+      </div >
     );
   }
 }

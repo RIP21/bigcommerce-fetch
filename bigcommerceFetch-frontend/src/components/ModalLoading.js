@@ -19,20 +19,8 @@ const ModalLoading = ({show, now, onClose, onRedirect}) => {
         <ProgressBar active label={`${now}%`} striped bsStyle={isDone ? "success" : "danger"} now={now}/>
       </ModalBody>
       <Modal.Footer>
-    {isDone ? < button
-  id = "cart-btn"
-  onClick = {onRedirect}
-  className = "btn btn-danger" > Go
-  to
-  cart < / button >
-:
-<
-  button
-  id = "cart-btn"
-  disabled = "disabled"
-  className = "btn btn-danger" > Go
-  to
-  cart < / button >
+        { isDone ? <button id="cart-btn" onClick={onRedirect} className="btn btn-danger">Go to cart</button> :
+          <button id="cart-btn" disabled="disabled" className="btn btn-danger">Go to cart</button>
         }
       </Modal.Footer>
     </Modal>
