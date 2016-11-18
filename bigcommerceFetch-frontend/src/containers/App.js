@@ -72,21 +72,7 @@ class App extends React.Component {
     if (value && products) {
       const matchedProduct = products.find(product => product.sku == value.toUpperCase());
       if (matchedProduct) {
-        const changedItem = objectAssign({}, item, {
-          disabled: false,
-
-          value: value.toUpperCase(),
-          sku: matchedProduct.sku,
-          skuId: matchedProduct.skuId,
-          optionValue: matchedProduct.value,
-          skuOptionValueId: matchedProduct.skuOptionValueId,
-          skuProductOptionId: matchedProduct.skuProductOptionId,
-          productId: matchedProduct.productId,
-          productName: matchedProduct.productName,
-          tinyImg: matchedProduct.tinyImg,
-          standardImg: matchedProduct.standardImg
-        });
-        this.props.actions.updateItem(changedItem);
+        this.fetchPrice(matchedProduct, item, this.refreshItem);
       } else this.disableAndClean(item);
     } else this.disableAndClean(item);
   };
@@ -124,24 +110,49 @@ class App extends React.Component {
     });
   };
 
-  onSuggestionSelected = (event, suggestion, item) => {
+  refreshItem = (data, newItem, item) => {
     const changedItem = objectAssign({}, item, {
       disabled: false,
-      value: suggestion.sku,
+      value: newItem.sku,
 
-      sku: suggestion.sku,
-      skuId: suggestion.skuId,
-      skuOptionValueId: suggestion.skuOptionValueId,
-      skuProductOptionId: suggestion.skuProductOptionId,
-      productId: suggestion.productId,
-      productName: suggestion.productName,
-      optionValue: suggestion.value,
-      tinyImg: suggestion.tinyImg,
-      standardImg: suggestion.standardImg
+      sku: newItem.sku,
+      skuId: newItem.skuId,
+      skuOptionValueId: newItem.skuOptionValueId,
+      skuProductOptionId: newItem.skuProductOptionId,
+      productId: newItem.productId,
+      productName: newItem.productName,
+      optionValue: newItem.value,
+      tinyImg: newItem.tinyImg,
+      standardImg: newItem.standardImg,
+      price: data.details.unformattedPrice
     });
     this.props.actions.updateItem(changedItem);
+  };
+
+  onSuggestionSelected = (event, suggestion, item) => {
+    this.fetchPrice(suggestion, item, this.refreshItem);
     this.props.actions.addNewRow();
   };
+
+  fetchPrice = (newItem, item, callback) => {
+    let query = {};
+    query.action = "add";
+    query.product_id = newItem.productId;
+    query.variation_id = '';
+    query.currency_id = '';
+    query["attribute[" + newItem.skuProductOptionId + "]"] = '';
+    query["attribute[" + newItem.skuProductOptionId + "]"] = newItem.skuOptionValueId;
+    query.qty = '1';
+    jquery.ajax({
+      type: 'POST',
+      url: 'http://taipancanada.com/remote.php',
+      data: query,
+      success: (data) => {
+        callback(data, newItem, item);
+      }
+    });
+  };
+
 
   onAddButtonClick = () => {
     this.props.actions.addNewRow();
@@ -222,6 +233,7 @@ class App extends React.Component {
             <th>Item # (SKU)</th>
             <th>Product name</th>
             <th>Description</th>
+            <th>Price</th>
             <th>Quantity</th>
             <th/>
           </tr>

@@ -13,5 +13,6 @@ export const ITEM = {
   productName: '',
   optionValue: '',
   tinyImg: '',
-  standardImg: ''
+  standardImg: '',
+  price: ''
 };
