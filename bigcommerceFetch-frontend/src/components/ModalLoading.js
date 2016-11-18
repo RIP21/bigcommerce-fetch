@@ -12,7 +12,7 @@ const ModalLoading = ({show, now, onClose, onRedirect}) => {
   return (
     <Modal show={show} onHide={onClose}>
       <ModalHeader closeButton>
-        { isDone ? <ModalTitle>All items has been added!</ModalTitle> :
+        { isDone ? <ModalTitle>All items have been added!</ModalTitle> :
           <ModalTitle>We are adding items to the card</ModalTitle>}
       </ModalHeader>
       <ModalBody>

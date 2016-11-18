@@ -14,5 +14,5 @@ export const ITEM = {
   optionValue: '',
   tinyImg: '',
   standardImg: '',
-  price: ''
+  price: '0'
 };

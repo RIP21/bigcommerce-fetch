@@ -31,7 +31,6 @@ class App extends React.Component {
     super(props, context);
 
     this.state = {
-      value: "",
       show: false,
       now: 0,
       totalRequests: 0,
@@ -72,7 +71,7 @@ class App extends React.Component {
     if (value && products) {
       const matchedProduct = products.find(product => product.sku == value.toUpperCase());
       if (matchedProduct) {
-        this.fetchPrice(matchedProduct, item, this.refreshItem);
+        this.fetchPriceAndUpdate(matchedProduct, item, this.refreshItem);
       } else this.disableAndClean(item);
     } else this.disableAndClean(item);
   };
@@ -130,11 +129,11 @@ class App extends React.Component {
   };
 
   onSuggestionSelected = (event, suggestion, item) => {
-    this.fetchPrice(suggestion, item, this.refreshItem);
+    this.fetchPriceAndUpdate(suggestion, item,);
     this.props.actions.addNewRow();
   };
 
-  fetchPrice = (newItem, item, callback) => {
+  fetchPriceAndUpdate = (newItem, item) => {
     let query = {};
     query.action = "add";
     query.product_id = newItem.productId;
@@ -142,17 +141,17 @@ class App extends React.Component {
     query.currency_id = '';
     query["attribute[" + newItem.skuProductOptionId + "]"] = '';
     query["attribute[" + newItem.skuProductOptionId + "]"] = newItem.skuOptionValueId;
+    query.w = 'getProductAttributeDetails';
     query.qty = '1';
     jquery.ajax({
       type: 'POST',
       url: 'http://taipancanada.com/remote.php',
       data: query,
       success: (data) => {
-        callback(data, newItem, item);
+        this.refreshItem(data, newItem, item);
       }
     });
   };
-
 
   onAddButtonClick = () => {
     this.props.actions.addNewRow();
@@ -220,6 +219,9 @@ class App extends React.Component {
 
   render() {
     const {suggestions, now, show} = this.state;
+    const totalPrice = Math.floor(this.props.items.reduce((sum, item) => {
+          return sum + (item.price * item.quantity);
+        }, 0) * 100) / 100;
     return (
       <div>
         <ModalLoading now={now}
@@ -257,6 +259,7 @@ class App extends React.Component {
           )
           }
           </tbody>
+          <caption id="total-caption">Total: ${totalPrice}</caption>
         </table>
         <div id="buttons-block">
           <button id="cart-btn" onClick={this.onAddButtonClick} className="btn btn-danger">Add item</button>

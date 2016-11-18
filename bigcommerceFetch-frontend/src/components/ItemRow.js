@@ -22,6 +22,8 @@ const ItemRow = ({
     onBlur: () => onBlur(item)
   };
 
+  const calculatedPrice = Math.floor((item.price * item.quantity) * 100) / 100;
+
   return (
     <tr>
       <td>
@@ -47,7 +49,7 @@ const ItemRow = ({
       /></td>
       <td className="text-cell">{item.productName}</td>
       <td className="text-cell">{item.optionValue}</td>
-      <td>{item.price}</td>
+      <td>${calculatedPrice}</td>
       <td className="qty"><input className="qty-textbox" disabled={item.disabled} min="0" max="100000" type="number"
                                  onChange={(event) => onChange(event, item)}
                                  value={item.quantity}/></td>
