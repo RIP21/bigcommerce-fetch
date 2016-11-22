@@ -1,12 +1,14 @@
 import React, {PropTypes} from "react";
 import {connect} from 'react-redux';
 import ItemRow from '../components/ItemRow';
+import PrintableTable from '../components/PrintableTable';
 import ModalLoading from '../components/ModalLoading';
 import {bindActionCreators} from 'redux';
 import * as itemActions from '../actions/itemActions';
 import objectAssign from 'object-assign';
 import {sortItemsByIdSelector} from "../selector/selectors";
 import jquery from 'jquery';
+import * as empty from "../constants/emptyEntities";
 
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -71,7 +73,7 @@ class App extends React.Component {
     if (value && products) {
       const matchedProduct = products.find(product => product.sku == value.toUpperCase());
       if (matchedProduct) {
-        this.fetchPriceAndUpdate(matchedProduct, item, this.refreshItem);
+        this.fetchPriceAndUpdate(matchedProduct, item);
       } else this.disableAndClean(item);
     } else this.disableAndClean(item);
   };
@@ -217,17 +219,30 @@ class App extends React.Component {
     this.setState({now: Math.floor((((totalRequests - queries.length) / totalRequests) * 100))});
   };
 
+  printData = () => {
+    const divToPrint = document.getElementById("print-table");
+    let newWin = window.open("");
+    newWin.document.write(empty.STYLE_FOR_PRINT + divToPrint.outerHTML);
+    newWin.print();
+    newWin.close();
+  };
+
   render() {
     const {suggestions, now, show} = this.state;
-    const totalPrice = Math.floor(this.props.items.reduce((sum, item) => {
-          return sum + (item.price * item.quantity);
-        }, 0) * 100) / 100;
+    const totalPrice = (Math.round(this.props.items.reduce((sum, item) => {
+        return sum + (item.price * item.quantity);
+      }, 0) * 100) / 100).toString();
+
+    const priceToPrint = totalPrice.substring(totalPrice.indexOf('.') + 1, totalPrice.length).length == 2 || totalPrice === '0' ?
+      totalPrice : `${totalPrice}0`;
+
     return (
       <div>
         <ModalLoading now={now}
                       show={show}
                       onClose={this.onModalClose}
                       onRedirect={this.onModalRedirect}/>
+        <PrintableTable items={this.props.items}/>
         <table id="order-form">
           <thead>
           <tr>
@@ -259,18 +274,19 @@ class App extends React.Component {
           )
           }
           </tbody>
-          <caption id="total-caption">Total: ${totalPrice}</caption>
+          <caption id="total-caption">Total: ${priceToPrint}</caption>
         </table>
         <div id="buttons-block">
           <button id="cart-btn" onClick={this.onAddButtonClick} className="btn btn-danger">Add item</button>
           <br/>
-          <button id="cart-btn" onClick={this.addAllToCart} className="btn btn-danger">Add all to cart</button>
+          <button id="cart-btn" onClick={this.addAllToCart} className="btn btn-danger">Place order</button>
+          <br/>
+          <button id="cart-btn" onClick={this.printData} className="btn btn-danger">Print list</button>
         </div>
-      </div >
+      </div>
     );
   }
 }
-
 
 App.propTypes = {
   products: PropTypes.array.isRequired,

@@ -22,7 +22,10 @@ const ItemRow = ({
     onBlur: () => onBlur(item)
   };
 
-  const calculatedPrice = Math.floor((item.price * item.quantity) * 100) / 100;
+  const calculatedPrice = (Math.round((item.price * item.quantity) * 100) / 100).toString();
+
+  const priceToPrint = calculatedPrice.substring(calculatedPrice.indexOf('.') + 1, calculatedPrice.length).length == 2 || calculatedPrice === '0' ?
+    calculatedPrice : `${calculatedPrice}0`;
 
   return (
     <tr>
@@ -49,7 +52,7 @@ const ItemRow = ({
       /></td>
       <td className="text-cell">{item.productName}</td>
       <td className="text-cell">{item.optionValue}</td>
-      <td>${calculatedPrice}</td>
+      <td>${priceToPrint}</td>
       <td className="qty"><input className="qty-textbox" disabled={item.disabled} min="0" max="100000" type="number"
                                  onChange={(event) => onChange(event, item)}
                                  value={item.quantity}/></td>

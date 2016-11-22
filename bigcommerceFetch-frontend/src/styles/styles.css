@@ -90,6 +90,16 @@
     margin: auto;
 }
 
+#order-form td, #order-form th {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+#order-form th {
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+}
+
 #cart-btn, #bulk-add {
     background-image: linear-gradient(to bottom, #FF0000 0, #9C0101 100%) !important;
     border: none !important;
@@ -100,17 +110,7 @@
 }
 
 #cart-btn {
-    width: auto;
-}
-
-#order-form td, #order-form th {
-    border-left: none !important;
-    border-right: none !important;
-}
-
-#order-form th {
-    border-top: 3px solid;
-    border-bottom: 3px solid;
+    width: 150px;
 }
 
 tr td:first-child, tr td:last-child {
@@ -125,7 +125,6 @@ tr td:first-child, tr td:last-child {
 }
 
 #buttons-block button {
-    width: auto;
     margin-bottom: 5px;
 }
 
@@ -158,4 +157,8 @@ tr td:first-child, tr td:last-child {
 
 #showthumb:hover + .thumb {
     display: block;
+}
+
+#print-table {
+    display: none;
 }
