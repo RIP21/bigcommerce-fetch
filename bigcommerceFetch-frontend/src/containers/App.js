@@ -9,7 +9,7 @@ import objectAssign from 'object-assign';
 import {sortItemsByIdSelector} from "../selector/selectors";
 import jquery from 'jquery';
 import * as empty from "../constants/emptyEntities";
-
+import numeral from 'numeral';
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
 
@@ -229,12 +229,10 @@ class App extends React.Component {
 
   render() {
     const {suggestions, now, show} = this.state;
-    const totalPrice = (Math.round(this.props.items.reduce((sum, item) => {
+    const totalPrice = numeral(this.props.items.reduce((sum, item) => {
         return sum + (item.price * item.quantity);
-      }, 0) * 100) / 100).toString();
+    }, 0)).format('$0,0.00');
 
-    const priceToPrint = totalPrice.substring(totalPrice.indexOf('.') + 1, totalPrice.length).length == 2 || totalPrice === '0' ?
-      totalPrice : `${totalPrice}0`;
 
     return (
       <div>
@@ -242,7 +240,7 @@ class App extends React.Component {
                       show={show}
                       onClose={this.onModalClose}
                       onRedirect={this.onModalRedirect}/>
-        <PrintableTable items={this.props.items}/>
+        <PrintableTable items={this.props.items} totalPrice={totalPrice}/>
         <table id="order-form">
           <thead>
           <tr>
@@ -256,25 +254,28 @@ class App extends React.Component {
           </tr>
           </thead>
           <tbody>
-          {this.props.items.map(item =>
-            <ItemRow
-              key={item.itemId.toString()}
-              suggestions={suggestions}
-              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-              getSuggestionValue={getSuggestionValue}
-              renderSuggestion={renderSuggestion}
-              onSuggestionSelected={this.onSuggestionSelected}
-              item={item}
-              onChange={this.onQuantityChange}
-              onAutosuggestChange={this.onAutosuggestChange}
-              onBlur={this.onAutosuggestBlur}
-              onRemoveButtonClick={this.onRemoveButtonClick}
-            />
+          {this.props.items.map(item => {
+              const calculatedPrice = numeral((item.price * item.quantity).toString()).format('$0,0.00');
+              return (<ItemRow
+                key={item.itemId.toString()}
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                getSuggestionValue={getSuggestionValue}
+                renderSuggestion={renderSuggestion}
+                onSuggestionSelected={this.onSuggestionSelected}
+                item={item}
+                onChange={this.onQuantityChange}
+                onAutosuggestChange={this.onAutosuggestChange}
+                onBlur={this.onAutosuggestBlur}
+                onRemoveButtonClick={this.onRemoveButtonClick}
+                totalPrice={calculatedPrice}
+              />);
+            }
           )
           }
           </tbody>
-          <caption id="total-caption">Total: ${priceToPrint}</caption>
+          <caption id="total-caption">Total: {totalPrice}</caption>
         </table>
         <div id="buttons-block">
           <button id="cart-btn" onClick={this.onAddButtonClick} className="btn btn-danger">Add item</button>

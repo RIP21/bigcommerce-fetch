@@ -1,15 +1,7 @@
 import React, {PropTypes} from 'react';
+import numeral from 'numeral';
 
-
-const PrintableTable = ({items}) => {
-
-  const totalPrice = (Math.round(items.reduce((sum, item) => {
-      return sum + (item.price * item.quantity);
-    }, 0) * 100) / 100).toString();
-
-  const priceToPrint = totalPrice.substring(totalPrice.indexOf('.') + 1, totalPrice.length).length == 2 || totalPrice === '0' ?
-    totalPrice : `${totalPrice}0`;
-
+const PrintableTable = ({items, totalPrice}) => {
   return (
     <table id="print-table">
       <h1>Order</h1>
@@ -24,29 +16,30 @@ const PrintableTable = ({items}) => {
       </tr>
       </thead>
       <tbody>
-      {items.map(item =>
-        <PrintRow key={item.itemId.toString()}
-                  item={item}
-        />)
+      {items.map(item => {
+        debugger;
+        const calculatedPrice = numeral((item.price * item.quantity).toString()).format('$0,0.00');
+        return (<PrintRow key={item.itemId.toString()}
+                          item={item}
+                          totalPrice={calculatedPrice}
+        />);
+      })
       }
       </tbody>
-      <caption id="total-caption">Total: ${priceToPrint}</caption>
+      <caption id="total-caption">Total: {totalPrice}</caption>
     </table>
   );
 };
 
 PrintableTable.propTypes = {
-  items: PropTypes.array.isRequired
+  items: PropTypes.array.isRequired,
+  totalPrice: PropTypes.string.isRequired
 };
 
 export default PrintableTable;
 
 
-const PrintRow = ({item}) => {
-  const calculatedPrice = (Math.round((item.price * item.quantity) * 100) / 100).toString();
-  const priceToPrint = calculatedPrice.substring(calculatedPrice.indexOf('.') + 1, calculatedPrice.length).length == 2 || calculatedPrice === '0' ?
-    calculatedPrice : `${calculatedPrice}0`;
-
+const PrintRow = ({item, totalPrice}) => { //eslint-disable-line
   return (
     <tr>
       <td>
@@ -60,12 +53,13 @@ const PrintRow = ({item}) => {
       <td className="autosuggest-cell"> {item.sku}</td>
       <td className="text-cell">{item.productName}</td>
       <td className="text-cell">{item.optionValue}</td>
-      <td>${priceToPrint}</td>
+      <td>{totalPrice}</td>
       <td className="qty">{item.quantity}</td>
     </tr>
   );
 };
 
 PrintRow.propTypes = {
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  totalPrice: PropTypes.string.isRequired
 };

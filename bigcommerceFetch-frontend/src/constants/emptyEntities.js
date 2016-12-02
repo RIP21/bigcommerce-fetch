@@ -1,7 +1,7 @@
 export const ITEM = {
   itemId: 0,
   value: '',
-  quantity: 1,
+  quantity: 0,
   disabled: true,
   dateCreated: new Date(),
 
