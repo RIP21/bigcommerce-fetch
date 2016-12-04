@@ -1,0 +1,44 @@
+#img {
+    width: 100%;
+}
+
+html, body {
+    height: 297mm;
+    width: 210mm;
+    /* to centre page on screen*/
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 297mm;
+}
+
+body {
+    font-size: 14px;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, Sans-Serif;
+    font-weight: normal;
+    display: flex;
+    flex-direction: column;
+}
+
+#print-table {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    border-spacing: 0;
+}
+
+#print-table td, #print-table th {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+#print-table th {
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+}
+
+#total-caption {
+    padding-top: 25px;
+    font-weight: bold;
+    caption-side: bottom;
+    text-align: right;
+}

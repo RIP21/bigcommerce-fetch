@@ -159,6 +159,6 @@ tr td:first-child, tr td:last-child {
     display: block;
 }
 
-#print-table {
+#print-me {
     display: none;
 }

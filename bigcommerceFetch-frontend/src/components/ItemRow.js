@@ -70,7 +70,8 @@ ItemRow.propTypes = {
   onAutosuggestChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   onRemoveButtonClick: PropTypes.func.isRequired,
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  totalPrice: PropTypes.string.isRequired
 };
 
 export default ItemRow;

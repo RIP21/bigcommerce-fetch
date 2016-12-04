@@ -220,11 +220,11 @@ class App extends React.Component {
   };
 
   printData = () => {
-    const divToPrint = document.getElementById("print-table");
+    const divToPrint = document.getElementById("print-me");
     let newWin = window.open("");
     newWin.document.write(empty.STYLE_FOR_PRINT + divToPrint.outerHTML);
     newWin.print();
-    newWin.close();
+    //newWin.close();
   };
 
   render() {
