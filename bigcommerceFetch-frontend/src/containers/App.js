@@ -223,8 +223,10 @@ class App extends React.Component {
     const divToPrint = document.getElementById("print-me");
     let newWin = window.open("");
     newWin.document.write(empty.STYLE_FOR_PRINT + divToPrint.outerHTML);
-    newWin.print();
-    //newWin.close();
+    setTimeout(() => {
+      newWin.print();
+      newWin.close();
+    }, 100);
   };
 
   render() {

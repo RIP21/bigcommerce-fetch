@@ -1,13 +1,23 @@
 import React, {PropTypes} from 'react';
 import numeral from 'numeral';
-import '../images/Header.PNG';
-import '../images/Footer.png';
 
 const PrintableTable = ({items, totalPrice}) => {
+  const skuMap = new Map;
+  items.map(item => {
+    if (skuMap.get(item.value)) {
+      let uniqueItem = skuMap.get(item.value);
+      uniqueItem.quantity = parseInt(uniqueItem.quantity) + parseInt(item.quantity);
+      skuMap.set(uniqueItem.value, uniqueItem);
+    } else {
+      skuMap.set(item.value, Object.assign({}, item));
+    }
+  });
+
+  skuMap.delete("");
 
   return (
     <div id="print-me">
-      <img id="header" src="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/images/QuickHeader.png"/>
+      <img id="header" src="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/images/QuickHeader1.png"/>
       <table id="print-table">
         <thead>
         <tr>
@@ -19,13 +29,8 @@ const PrintableTable = ({items, totalPrice}) => {
           <th>Quantity</th>
         </tr>
         </thead>
-        <tfoot>
-        <tr>
-          <td id="spacer"/>
-        </tr>
-        </tfoot>
         <tbody>
-        {items.map(item => {
+        {[...skuMap.values()].map(item => {
           const calculatedPrice = numeral((item.price * item.quantity).toString()).format('$0,0.00');
           return (<PrintRow key={item.itemId.toString()}
                             item={item}
@@ -36,7 +41,10 @@ const PrintableTable = ({items, totalPrice}) => {
         </tbody>
         <caption id="total-caption">Total: {totalPrice}</caption>
       </table>
-      <img id="footer" src="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/images/QuickFooter.png"/>
+      <footer>
+        <img id="footer" src="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/images/QuickFooter.png"/>
+      </footer>
+
     </div>
   );
 };
@@ -60,11 +68,11 @@ const PrintRow = ({item, totalPrice}) => { //eslint-disable-line
           : <div/>
         }
       </td>
-      <td className="autosuggest-cell"> {item.sku}</td>
+      <td> {item.sku}</td>
       <td className="text-cell">{item.productName}</td>
       <td className="text-cell">{item.optionValue}</td>
       <td>{totalPrice}</td>
-      <td className="qty">{item.quantity}</td>
+      <td>{item.quantity}</td>
     </tr>
   );
 };

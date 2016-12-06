@@ -4,7 +4,7 @@ export default {
   products: [],
   items: [
     Object.assign({}, Empty.ITEM, {itemId: 0}),
-    Object.assign({}, Empty.ITEM, {itemId: 1}),
+    /*Object.assign({}, Empty.ITEM, {itemId: 1}),
     Object.assign({}, Empty.ITEM, {itemId: 2}),
     Object.assign({}, Empty.ITEM, {itemId: 3}),
     Object.assign({}, Empty.ITEM, {itemId: 4}),
@@ -32,5 +32,6 @@ export default {
     Object.assign({}, Empty.ITEM, {itemId: 26}),
     Object.assign({}, Empty.ITEM, {itemId: 27}),
     Object.assign({}, Empty.ITEM, {itemId: 28}),
+     Object.assign({}, Empty.ITEM, {skuId: 'ABC-123', sku: 'ABC-123', value: 'ABC-123' ,itemId: 29}),*/
   ]
 };
