@@ -10,6 +10,7 @@ import {sortItemsByIdSelector} from "../selector/selectors";
 import jquery from 'jquery';
 import * as empty from "../constants/emptyEntities";
 import numeral from 'numeral';
+import Cookie from 'js-cookie';
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
 
@@ -38,6 +39,13 @@ class App extends React.Component {
       totalRequests: 0,
       suggestions: []
     };
+  }
+
+  componentWillMount() {
+    const savedItems = Cookie.getJSON("quick-order");
+    if (jquery.isArray(savedItems) && savedItems.length >= 1) {
+      savedItems.map(item => this.props.actions.addItem(item));
+    }
   }
 
   onModalRedirect = () => {
@@ -93,6 +101,7 @@ class App extends React.Component {
       standardImg: ''
     });
     this.props.actions.updateItem(changedItem);
+
   };
 
 
@@ -110,6 +119,7 @@ class App extends React.Component {
       suggestions: []
     });
   };
+
 
   refreshItem = (data, newItem, item) => {
     const changedItem = objectAssign({}, item, {
@@ -133,6 +143,7 @@ class App extends React.Component {
   onSuggestionSelected = (event, suggestion, item) => {
     this.fetchPriceAndUpdate(suggestion, item,);
     this.props.actions.addNewRow();
+
   };
 
   fetchPriceAndUpdate = (newItem, item) => {
@@ -151,17 +162,22 @@ class App extends React.Component {
       data: query,
       success: (data) => {
         this.refreshItem(data, newItem, item);
+
       }
     });
+
   };
 
   onAddButtonClick = () => {
     this.props.actions.addNewRow();
+
   };
+
 
   onRemoveButtonClick = (item) => {
     const {items, actions} = this.props;
     if (items.length != 1) actions.removeItem(item);
+
   };
 
 
@@ -173,6 +189,7 @@ class App extends React.Component {
       this.setState({totalRequests: queue.length});
       this.processRequest(queue);
       this.props.actions.clearItems();
+
     } else {
       alert("NO items to add to cart");
     }
@@ -229,10 +246,15 @@ class App extends React.Component {
     }, 100);
   };
 
+  updateCookies() {
+    Cookie.set("quick-order", this.props.items, {expires: 7});
+  }
+
   render() {
+    this.updateCookies();
     const {suggestions, now, show} = this.state;
     const totalPrice = numeral(this.props.items.reduce((sum, item) => {
-        return sum + (item.price * item.quantity);
+      return sum + (item.price * item.quantity);
     }, 0)).format('$0,0.00');
 
 

@@ -15,7 +15,9 @@ class GenericFetchService {
     @Autowired
     RestTemplate rt;
 
-    private List<String> failedLinks = new LinkedList<>();
+    private List<String> failedLinks = new LinkedList<>()
+
+    private HOSTNAME = "taipancanada.com"
 
     public List fetch(Class aClass) {
         List items = new LinkedList<>()
@@ -40,13 +42,13 @@ class GenericFetchService {
     private String resolveUrl(Class aClass) {
         switch (aClass) {
             case Sku:
-                return "https://store-2e83t.mybigcommerce.com/api/v2/products/skus.json?limit=250&page="
+                return "https://${HOSTNAME}/api/v2/products/skus.json?limit=250&page="
                 break
             case Product:
-                return "https://store-2e83t.mybigcommerce.com/api/v2/products.json?limit=250&page="
+                return "https://${HOSTNAME}/api/v2/products.json?limit=250&page="
                 break
             case Value:
-                return "https://store-2e83t.mybigcommerce.com/api/v2/options/values.json?limit=250&page="
+                return "https://${HOSTNAME}/api/v2/options/values.json?limit=250&page="
                 break
             default:
                 throw new Exception("Please put Sku, Product and Value classes only")
