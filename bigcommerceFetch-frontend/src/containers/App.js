@@ -43,7 +43,7 @@ class App extends React.Component {
 
   componentWillMount() {
     const savedItems = Cookie.getJSON("quick-order");
-    if (jquery.isArray(savedItems) && savedItems.length >= 1) {
+    if (jquery.isArray(savedItems) && savedItems.length > 1) {
       savedItems.map(item => this.props.actions.addItem(item));
     }
   }

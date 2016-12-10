@@ -9,7 +9,7 @@ class ProductApi {
 }
 const getLink = () => {
   if (process.env.NODE_ENV === 'production') {
-    return 'http://138.197.134.10:8080/api/flatSkus';
+    return 'http://159.203.4.149:8080/api/flatSkus';
   } else return '/api/flatSkus';
 };
 
