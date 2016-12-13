@@ -2,18 +2,24 @@ import React, {PropTypes} from 'react';
 import numeral from 'numeral';
 
 const PrintableTable = ({items, totalPrice}) => {
-  const skuMap = new Map;
-  items.map(item => {
-    if (skuMap.get(item.value)) {
-      let uniqueItem = skuMap.get(item.value);
-      uniqueItem.quantity = parseInt(uniqueItem.quantity) + parseInt(item.quantity);
-      skuMap.set(uniqueItem.value, uniqueItem);
-    } else {
-      skuMap.set(item.value, Object.assign({}, item));
-    }
-  });
 
-  skuMap.delete("");
+  function collapseDuplicates(items) {
+    const skuMap = new Map;
+    items.map(item => {
+      if (skuMap.get(item.value)) {
+        let uniqueItem = skuMap.get(item.value);
+        uniqueItem.quantity = parseInt(uniqueItem.quantity) + parseInt(item.quantity);
+        skuMap.set(uniqueItem.value, uniqueItem);
+      } else {
+        skuMap.set(item.value, Object.assign({}, item));
+      }
+    });
+
+    skuMap.delete("");
+    return skuMap;
+  }
+
+  const skuMap = collapseDuplicates(items);
 
   return (
     <div id="print-me">
