@@ -62,7 +62,6 @@ class App extends React.Component {
     this.props.actions.updateItem(changedItem);
   };
 
-
   getSuggestions = value => {
     const inputValue = value.trim().toUpperCase();
     const inputLength = inputValue.length;
@@ -73,7 +72,6 @@ class App extends React.Component {
     const changedItem = objectAssign({}, item, {value: newValue});
     this.props.actions.updateItem(changedItem);
   };
-
 
   onAutosuggestBlur = (item) => {
     const {value} = item;
@@ -173,13 +171,11 @@ class App extends React.Component {
 
   };
 
-
   onRemoveButtonClick = (item) => {
     const {items, actions} = this.props;
     if (items.length != 1) actions.removeItem(item);
 
   };
-
 
   addAllToCart = () => {
     const {items} = this.props;
@@ -211,7 +207,6 @@ class App extends React.Component {
     });
     return queries;
   };
-
 
   processRequest = (queries) => {
     this.visualizeProgress(queries);

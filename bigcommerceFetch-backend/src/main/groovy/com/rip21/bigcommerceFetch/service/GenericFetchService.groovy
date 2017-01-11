@@ -3,6 +3,7 @@ package com.rip21.bigcommerceFetch.service
 import com.rip21.bigcommerceFetch.domain.Product
 import com.rip21.bigcommerceFetch.domain.Sku
 import com.rip21.bigcommerceFetch.domain.Value
+import com.rip21.bigcommerceFetch.domain.Category
 import groovy.util.logging.Log4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -19,7 +20,7 @@ class GenericFetchService {
 
     private HOSTNAME = "taipancanada.com"
 
-    public List fetch(Class aClass) {
+    List fetch(Class aClass) {
         List items = new LinkedList<>()
         for (int page = 1; true; page++) {
             def fetchedItems = doRequest(resolveUrl(aClass) + page, aClass)
@@ -50,8 +51,11 @@ class GenericFetchService {
             case Value:
                 return "https://${HOSTNAME}/api/v2/options/values.json?limit=250&page="
                 break
+            case Category:
+                return "https://${HOSTNAME}/api/v2/categories.json?limit=250&page="
+                break
             default:
-                throw new Exception("Please put Sku, Product and Value classes only")
+                throw new Exception("Please put Sku, Category, Product and Value classes only")
         }
     }
 

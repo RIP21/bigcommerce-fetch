@@ -8,24 +8,15 @@ import org.springframework.data.mongodb.core.mapping.Document
 
 @EqualsAndHashCode(excludes = ["id"])
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Document(collection = "products")
-class Product {
+@Document(collection = "categories")
+class Category {
 
     @Id
     Long id
 
+    @JsonProperty("parent_id")
+    Long parentId
+
     String name
-
-    @JsonProperty("option_set_id")
-    Long optionSetId
-
-    @JsonProperty("is_visible")
-    Boolean isVisible
-
-    @JsonProperty("primary_image")
-    ProductImage productImage
-
-    String[] categories
-
 
 }
