@@ -5,7 +5,6 @@ import com.rip21.bigcommerceFetch.domain.FlatSku
 import com.rip21.bigcommerceFetch.domain.Product
 import com.rip21.bigcommerceFetch.domain.Sku
 import com.rip21.bigcommerceFetch.domain.Value
-import com.rip21.bigcommerceFetch.domain.Category
 import groovy.util.logging.Log4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -49,8 +48,7 @@ class SchedulerService {
                 flattenerService.flatten(
                         fetchService.fetch(Sku.class),
                         fetchService.fetch(Product.class),
-                        fetchService.fetch(Value.class),
-                        fetchService.fetch(Category.class),
+                        fetchService.fetch(Value.class)
                 ))
         flatSkus
     }

@@ -25,7 +25,5 @@ class Product {
     @JsonProperty("primary_image")
     ProductImage productImage
 
-    String[] categories
-
 
 }

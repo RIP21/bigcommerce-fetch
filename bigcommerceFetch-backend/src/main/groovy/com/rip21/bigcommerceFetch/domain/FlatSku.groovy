@@ -13,7 +13,7 @@ class FlatSku {
 
     }
 
-    FlatSku(Sku sku, Product product, Value value, List<String> categories) {
+    FlatSku(Sku sku, Product product, Value value) {
         this.id = sku.id
         this.skuid = sku.id
         this.skuProductId = sku.productId
@@ -31,9 +31,6 @@ class FlatSku {
 
         this.optionValueId = value.id
         this.value = value.value
-        }
-        if (categories) {
-            this.categories = categories
         }
     }
 
@@ -71,7 +68,5 @@ class FlatSku {
     Long optionValueId
 
     String value
-
-    String[] categories
 
 }
