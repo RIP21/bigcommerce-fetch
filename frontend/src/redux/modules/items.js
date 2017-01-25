@@ -2,15 +2,17 @@ import * as Empty from "../../constants/constants";
 import objectAssign from 'object-assign';
 
 
-export const REMOVE_ITEM = 'items/REMOVE';
-export const UPDATE_ITEM = 'items/UPDATE';
-export const ADD_ITEM = 'items/ADD';
-export const CLEAR_ALL_ITEMS = 'items/CLEAR_ALL';
+const REMOVE_ITEM = 'items/REMOVE';
+const UPDATE_ITEM = 'items/UPDATE';
+const ADD_ITEM = 'items/ADD';
+const CLEAR_ALL_ITEMS = 'items/CLEAR_ALL';
+const RESTORE_ITEMS = "items/RESTORE";
+
 
 
 const initialState = [
   Object.assign({}, Empty.ITEM, {itemId: 0}),
-  /*Object.assign({}, Empty.ITEM, {itemId: 1}),
+/*  Object.assign({}, Empty.ITEM, {itemId: 1}),
    Object.assign({}, Empty.ITEM, {itemId: 2}),
    Object.assign({}, Empty.ITEM, {itemId: 3}),
    Object.assign({}, Empty.ITEM, {itemId: 4}),
@@ -29,7 +31,7 @@ const initialState = [
    Object.assign({}, Empty.ITEM, {itemId: 17}),
    Object.assign({}, Empty.ITEM, {itemId: 18}),
    Object.assign({}, Empty.ITEM, {itemId: 19}),
-   Object.assign({}, Empty.ITEM, {itemId: 20}),s
+   Object.assign({}, Empty.ITEM, {itemId: 20}),
    Object.assign({}, Empty.ITEM, {itemId: 21}),
    Object.assign({}, Empty.ITEM, {itemId: 22}),
    Object.assign({}, Empty.ITEM, {itemId: 23}),
@@ -55,8 +57,12 @@ export default function items(state = initialState, action) {
     case REMOVE_ITEM:
       return [...state.filter(item => item.itemId !== action.item.itemId)];
 
+    case RESTORE_ITEMS:
+      debugger;
+      return [...action.items];
+
     case CLEAR_ALL_ITEMS:
-      return initialState.items;
+      return [...initialState];
 
     default:
       return state;
@@ -88,6 +94,13 @@ export function addNewRow() {
     const newItem = objectAssign({}, Empty.ITEM, {itemId: generateItemId(getState()), dateCreated: new Date()});
     dispatch(addItem(newItem));
   };
+}
+
+export function restoreFromCookies(items) {
+  return {
+    items,
+    type: RESTORE_ITEMS
+  }
 }
 
 

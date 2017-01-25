@@ -1,15 +1,16 @@
-import React, {PropTypes} from "react";
-import {connect} from 'react-redux';
-import ItemRow from '../components/ItemRow';
+import React from "react";
+import { connect } from 'react-redux';
+import ItemsTable from '../components/ItemsTable';
 import PrintableTable from '../components/PrintableTable';
 import ModalLoading from '../components/ModalLoading';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 import * as itemActions from '../redux/modules/items';
 import objectAssign from 'object-assign';
-import {sortItemsByIdSelector} from "../selector/selectors";
+import { sortItemsByIdSelector } from "../selector/selectors";
 import jquery from 'jquery';
 import * as empty from "../constants/constants";
 import numeral from 'numeral';
+import Measure from 'react-measure';
 import Cookie from 'js-cookie';
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -27,26 +28,27 @@ const renderSuggestion = suggestion => (
   </div>
 );
 
-
 class App extends React.Component {
-
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      show: false,
-      now: 0,
-      totalRequests: 0,
-      suggestions: []
-    };
-  }
+  state = {
+    show: false,
+    now: 0,
+    totalRequests: 0,
+    suggestions: [],
+  };
 
   componentWillMount() {
     const savedItems = Cookie.getJSON("quick-order");
-    if (jquery.isArray(savedItems) && savedItems.length > 1) {
-      savedItems.map(item => this.props.actions.addItem(item));
+    if (jquery.isArray(savedItems) && savedItems.length > 0) {
+      this.props.actions.restoreFromCookies(savedItems);
     }
   }
+
+  componentDidMount() {
+    window.onbeforeunload = () => {
+        this.updateCookies()
+      }
+    }
+
 
   onModalRedirect = () => {
     this.setState({show: false});
@@ -62,8 +64,7 @@ class App extends React.Component {
     this.props.actions.updateItem(changedItem);
   };
 
-
-  getSuggestions = value => {
+  getSuggestions = (value) => {
     const inputValue = value.trim().toUpperCase();
     const inputLength = inputValue.length;
     return inputLength === 0 ? [] : this.props.products.filter(product => product.sku.includes(inputValue)).slice(0, 10);
@@ -74,16 +75,19 @@ class App extends React.Component {
     this.props.actions.updateItem(changedItem);
   };
 
-
   onAutosuggestBlur = (item) => {
     const {value} = item;
     const {products} = this.props;
     if (value && products) {
-      const matchedProduct = products.find(product => product.sku===value.toUpperCase());
+      const matchedProduct = products.find(product => product.sku === value.toUpperCase());
       if (matchedProduct) {
         this.fetchPriceAndUpdate(matchedProduct, item);
-      } else this.disableAndClean(item);
-    } else this.disableAndClean(item);
+      } else {
+        this.disableAndClean(item);
+      }
+    } else {
+      this.disableAndClean(item);
+    }
   };
 
   disableAndClean = (item) => {
@@ -104,7 +108,6 @@ class App extends React.Component {
 
   };
 
-
 // Autosuggest will call this function every time you need to update suggestions.
 // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequested = ({value}) => {
@@ -119,7 +122,6 @@ class App extends React.Component {
       suggestions: []
     });
   };
-
 
   refreshItem = (data, newItem, item) => {
     const changedItem = objectAssign({}, item, {
@@ -173,13 +175,11 @@ class App extends React.Component {
 
   };
 
-
   onRemoveButtonClick = (item) => {
     const {items, actions} = this.props;
     if (items.length !== 1) actions.removeItem(item);
 
   };
-
 
   addAllToCart = () => {
     const {items} = this.props;
@@ -212,7 +212,6 @@ class App extends React.Component {
     return queries;
   };
 
-
   processRequest = (queries) => {
     this.visualizeProgress(queries);
     if (queries.length > 0) {
@@ -232,8 +231,9 @@ class App extends React.Component {
   };
 
   visualizeProgress = (queries) => {
-    const {totalRequests} = this.state;
-    this.setState({now: Math.floor((((totalRequests - queries.length) / totalRequests) * 100))});
+    this.setState((prevState) => {
+      return {now: Math.floor((((prevState.totalRequests - queries.length) / prevState.totalRequests) * 100))}
+    });
   };
 
   printData = () => {
@@ -246,61 +246,46 @@ class App extends React.Component {
     }, 100);
   };
 
-  updateCookies() {
+  updateCookies(){
     Cookie.set("quick-order", this.props.items, {expires: 7});
   }
 
   render() {
-    this.updateCookies();
     const {suggestions, now, show} = this.state;
     const totalPrice = numeral(this.props.items.reduce((sum, item) => {
       return sum + (item.price * item.quantity);
     }, 0)).format('$0,0.00');
 
-
     return (
       <div>
-        <ModalLoading now={now}
-                      show={show}
-                      onClose={this.onModalClose}
-                      onRedirect={this.onModalRedirect}/>
-        <PrintableTable items={this.props.items} totalPrice={totalPrice}/>
-        <table id="order-form">
-          <thead>
-          <tr>
-            <th/>
-            <th>Item # (SKU)</th>
-            <th>Product name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th/>
-          </tr>
-          </thead>
-          <tbody>
-          {this.props.items.map(item => {
-              const calculatedPrice = numeral((item.price * item.quantity).toString()).format('$0,0.00');
-              return (<ItemRow
-                key={item.itemId.toString()}
-                suggestions={suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                getSuggestionValue={getSuggestionValue}
-                renderSuggestion={renderSuggestion}
-                onSuggestionSelected={this.onSuggestionSelected}
-                item={item}
-                onChange={this.onQuantityChange}
-                onAutosuggestChange={this.onAutosuggestChange}
-                onBlur={this.onAutosuggestBlur}
-                onRemoveButtonClick={this.onRemoveButtonClick}
-                totalPrice={calculatedPrice}
-              />);
-            }
-          )
-          }
-          </tbody>
-          <caption id="total-caption">Total: {totalPrice}</caption>
-        </table>
+        <ModalLoading
+          now={now}
+          show={show}
+          onClose={this.onModalClose}
+          onRedirect={this.onModalRedirect}
+        />
+
+        <PrintableTable
+          items={this.props.items}
+          totalPrice={totalPrice}
+        />
+
+        <Measure onMeasure={(dimensions) => this.setState({dimensions})}>
+          <ItemsTable
+            items={this.props.items}
+            suggestions={suggestions}
+            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+            getSuggestionValue={getSuggestionValue}
+            renderSuggestion={renderSuggestion}
+            onSuggestionSelected={this.onSuggestionSelected}
+            onChange={this.onQuantityChange}
+            onAutosuggestChange={this.onAutosuggestChange}
+            onBlur={this.onAutosuggestBlur}
+            onRemoveButtonClick={this.onRemoveButtonClick}
+            totalPrice={totalPrice}
+          />
+        </Measure>
         <div id="buttons-block">
           <button id="cart-btn" onClick={this.onAddButtonClick} className="btn btn-danger">Add item</button>
           <br/>
@@ -312,13 +297,6 @@ class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  products: PropTypes.array,
-  items: PropTypes.array,
-  actions: PropTypes.object
-};
-
 
 function mapStateToProps(state) {
   return {

@@ -36,7 +36,8 @@ const ItemRow = ({
             </div>
           </div> : <div/>}
       </td>
-      <td className="autosuggest-cell"><Autosuggest
+      <td className="autosuggest-cell">
+        <Autosuggest
         id={item.itemId.toString()}
         suggestions={suggestions}
         onSuggestionsFetchRequested={onSuggestionsFetchRequested}
