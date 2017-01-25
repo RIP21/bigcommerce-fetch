@@ -1,2 +1,2 @@
-include 'bigcommerceFetch-backend'
-include 'bigcommerceFetch-frontend'
+include 'backend'
+include 'frontend'
