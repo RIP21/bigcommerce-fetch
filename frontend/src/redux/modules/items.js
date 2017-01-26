@@ -1,20 +1,32 @@
 import * as Empty from "../../constants/constants";
 import objectAssign from 'object-assign';
 
-
 const REMOVE_ITEM = 'items/REMOVE';
 const UPDATE_ITEM = 'items/UPDATE';
 const ADD_ITEM = 'items/ADD';
 const CLEAR_ALL_ITEMS = 'items/CLEAR_ALL';
 const RESTORE_ITEMS = "items/RESTORE";
 
-
-
 const initialState = [
   Object.assign({}, Empty.ITEM, {itemId: 0}),
-/*  Object.assign({}, Empty.ITEM, {itemId: 1}),
-   Object.assign({}, Empty.ITEM, {itemId: 2}),
-   Object.assign({}, Empty.ITEM, {itemId: 3}),
+  Object.assign({}, Empty.ITEM, {
+    itemId: 1,
+    skuId: 'ABC-123', sku: 'ABC-123', value: 'ABC-123',
+    productName: "Lorem epsum ololoolololo mountain dew",
+    optionValue: "Lorem epsum ololoolololo mountain dew",
+    tinyImg: "https://cdn6.bigcommerce.com/s-2e83t/products/3481/images/869/3-mtbn3xx_3__58804.1467947960.50.50.jpg?c=2",
+    standardImg: "https://cdn6.bigcommerce.com/s-2e83t/products/3481/images/869/3-mtbn3xx_3__58804.1467947960.451.416.jpg?c=2"
+  }),
+  Object.assign({}, Empty.ITEM, {
+      itemId: 2,
+      skuId: 'ABC-123', sku: 'ABC-123', value: 'ABC-123',
+      productName: "Lorem epsum ololoolololo mountain dew",
+      optionValue: "Lorem epsum ololoolololo mountain dew",
+      tinyImg: "https://cdn6.bigcommerce.com/s-2e83t/products/3481/images/869/3-mtbn3xx_3__58804.1467947960.50.50.jpg?c=2",
+      standardImg: "https://cdn6.bigcommerce.com/s-2e83t/products/3481/images/869/3-mtbn3xx_3__58804.1467947960.451.416.jpg?c=2"
+    },
+  ),
+  /*   Object.assign({}, Empty.ITEM, {itemId: 3}),
    Object.assign({}, Empty.ITEM, {itemId: 4}),
    Object.assign({}, Empty.ITEM, {itemId: 5}),
    Object.assign({}, Empty.ITEM, {itemId: 6}),

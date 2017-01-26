@@ -1,26 +1,60 @@
 .react-autosuggest__container {
-    width: 180px;
+    width: 17%;
     position: relative;
 }
 
 .autosuggest-cell {
-    width: 181px;
+    width: 17%;
 }
 
 .text-cell {
-    width: 300px;
+    width: 29%;
 }
 
 .qty {
-    width: 45px;
+    width: 4%;
 }
 
 .qty-textbox {
-    width: 40px;
+    width: 100%;
+}
+
+.thumb {
+    display: none;
+    float: left;
+    position: absolute;
+    left: 100px;
+    z-index: 4;
+}
+
+#image-cell {
+    width: 8%
+}
+
+#showthumb {
+    display: block;
+    width: auto;
+    height: auto;
+}
+
+.skuimg {
+    display: block;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.skuthumb {
+    width: auto;
+    height: auto;
+}
+
+#showthumb:hover + .thumb {
+    display: block;
 }
 
 #total-caption {
-
     padding-top: 25px;
     font-weight: bold;
     font-size: 16px;
@@ -30,8 +64,8 @@
 
 
 .react-autosuggest__input {
-    width: 180px;
-    height: 30px;
+    width: auto;
+    height: auto;
     font-family: Helvetica, sans-serif;
     font-weight: 300;
     font-size: 16px;
@@ -55,7 +89,8 @@
 .react-autosuggest__container--open .react-autosuggest__suggestions-container {
     display: block;
     position: absolute;
-    width: 180px;
+    min-width: 150px;
+    width: auto;
     border: 1px solid #aaa;
     background-color: #fff;
     font-family: Helvetica, sans-serif;
@@ -86,7 +121,7 @@
 }
 
 #order-form {
-    width: 100%;
+    width: 55%;
     margin: auto;
 }
 
@@ -113,10 +148,6 @@
     width: 150px;
 }
 
-tr td:first-child, tr td:last-child {
-    width: 6%
-}
-
 #buttons-block {
     width: 20%;
     margin: auto;
@@ -128,36 +159,6 @@ tr td:first-child, tr td:last-child {
     margin-bottom: 5px;
 }
 
-.thumb {
-    display: none;
-    float: left;
-    position: absolute;
-    left: 100px;
-    z-index: 4;
-}
-
-#showthumb {
-    float: left;
-    display: block;
-    width: 50px;
-    height: auto;
-}
-
-.skuimg {
-    float: left;
-    display: block;
-    width: 50px;
-    height: auto;
-}
-
-.skuthumb {
-    width: auto;
-    height: auto;
-}
-
-#showthumb:hover + .thumb {
-    display: block;
-}
 
 #print-me {
     display: none;

@@ -1,12 +1,9 @@
-import React, {PropTypes} from "react";
+import React, { PropTypes } from "react";
 import Autosuggest from 'react-autosuggest';
 
 const ItemRow = ({
+  ...rest,
   suggestions,
-  onSuggestionsFetchRequested,
-  onSuggestionsClearRequested,
-  getSuggestionValue,
-  renderSuggestion,
   onSuggestionSelected,
   onChange,
   onAutosuggestChange,
@@ -25,7 +22,7 @@ const ItemRow = ({
 
   return (
     <tr>
-      <td>
+      <td id="image-cell">
         {item.tinyImg ?
           <div>
             <div id="showthumb">
@@ -38,15 +35,12 @@ const ItemRow = ({
       </td>
       <td className="autosuggest-cell">
         <Autosuggest
-        id={item.itemId.toString()}
-        suggestions={suggestions}
-        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-        onSuggestionsClearRequested={onSuggestionsClearRequested}
-        getSuggestionValue={getSuggestionValue}
-        renderSuggestion={renderSuggestion}
-        onSuggestionSelected={(event, {suggestion}) => onSuggestionSelected(event, suggestion, item)}
-        inputProps={inputProps}
-      /></td>
+          id={item.itemId.toString()}
+          suggestions={suggestions}
+          onSuggestionSelected={(event, {suggestion}) => onSuggestionSelected(event, suggestion, item)}
+          inputProps={inputProps}
+          {...rest}
+        /></td>
       <td className="text-cell">{item.productName}</td>
       <td className="text-cell">{item.optionValue}</td>
       <td>{totalPrice}</td>

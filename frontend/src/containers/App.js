@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import ItemsTable from '../components/ItemsTable';
+import QuickOrderTable from '../components/QuickOrderTable';
 import PrintableTable from '../components/PrintableTable';
 import ModalLoading from '../components/ModalLoading';
 import { bindActionCreators } from 'redux';
@@ -34,14 +34,17 @@ class App extends React.Component {
     now: 0,
     totalRequests: 0,
     suggestions: [],
+    dimensions: {
+      width: -1
+    }
   };
 
-  componentWillMount() {
-    const savedItems = Cookie.getJSON("quick-order");
-    if (jquery.isArray(savedItems) && savedItems.length > 0) {
-      this.props.actions.restoreFromCookies(savedItems);
-    }
-  }
+  // componentWillMount() {
+  //   const savedItems = Cookie.getJSON("quick-order");
+  //   if (jquery.isArray(savedItems) && savedItems.length > 0) {
+  //     this.props.actions.restoreFromCookies(savedItems);
+  //   }
+  // }
 
   componentDidMount() {
     window.onbeforeunload = () => {
@@ -271,7 +274,7 @@ class App extends React.Component {
         />
 
         <Measure onMeasure={(dimensions) => this.setState({dimensions})}>
-          <ItemsTable
+          <QuickOrderTable
             items={this.props.items}
             suggestions={suggestions}
             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -284,6 +287,7 @@ class App extends React.Component {
             onBlur={this.onAutosuggestBlur}
             onRemoveButtonClick={this.onRemoveButtonClick}
             totalPrice={totalPrice}
+            dimensions={this.state.dimensions}
           />
         </Measure>
         <div id="buttons-block">
