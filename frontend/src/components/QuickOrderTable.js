@@ -4,9 +4,9 @@ import ItemsTable from './ItemsTable';
 
 const QuickOrderTable = ({dimensions, ...rest}) => {
   if (dimensions.width > 900) {
-    return <div><ItemsTable {...rest}/></div>
+    return <div><ItemsTable {...rest}/></div>; // Div wrapping is mandatory to be able to measure component dimensions
   } else {
-    return <div><CondensedItemsTable {...rest}/></div>
+    return <div><CondensedItemsTable {...rest}/></div>;
   }
 };
 

@@ -39,19 +39,12 @@ class App extends React.Component {
     }
   };
 
-  // componentWillMount() {
-  //   const savedItems = Cookie.getJSON("quick-order");
-  //   if (jquery.isArray(savedItems) && savedItems.length > 0) {
-  //     this.props.actions.restoreFromCookies(savedItems);
-  //   }
-  // }
-
-  componentDidMount() {
-    window.onbeforeunload = () => {
-        this.updateCookies()
-      }
+  componentWillMount() {
+    const savedItems = Cookie.getJSON("quick-order");
+    if (jquery.isArray(savedItems) && savedItems.length > 0) {
+      this.props.actions.restoreFromCookies(savedItems);
     }
-
+  }
 
   onModalRedirect = () => {
     this.setState({show: false});
@@ -146,9 +139,8 @@ class App extends React.Component {
   };
 
   onSuggestionSelected = (event, suggestion, item) => {
-    this.fetchPriceAndUpdate(suggestion, item,);
+    this.fetchPriceAndUpdate(suggestion, item);
     this.props.actions.addNewRow();
-
   };
 
   fetchPriceAndUpdate = (newItem, item) => {
@@ -167,7 +159,6 @@ class App extends React.Component {
       data: query,
       success: (data) => {
         this.refreshItem(data, newItem, item);
-
       }
     });
 
@@ -192,7 +183,6 @@ class App extends React.Component {
       this.setState({totalRequests: queue.length});
       this.processRequest(queue);
       this.props.actions.clearItems();
-
     } else {
       alert("NO items to add to cart");
     }
@@ -254,6 +244,7 @@ class App extends React.Component {
   }
 
   render() {
+    this.updateCookies();
     const {suggestions, now, show} = this.state;
     const totalPrice = numeral(this.props.items.reduce((sum, item) => {
       return sum + (item.price * item.quantity);

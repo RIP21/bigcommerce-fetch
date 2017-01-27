@@ -2,7 +2,6 @@ import React, { PropTypes } from "react";
 import Autosuggest from 'react-autosuggest';
 
 const ItemRow = ({
-  ...rest,
   suggestions,
   onSuggestionSelected,
   onChange,
@@ -10,7 +9,8 @@ const ItemRow = ({
   onBlur,
   onRemoveButtonClick,
   item,
-  totalPrice
+  totalPrice,
+  ...rest
 }) => {
 
   const inputProps = {

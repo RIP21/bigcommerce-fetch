@@ -9,7 +9,7 @@ const RESTORE_ITEMS = "items/RESTORE";
 
 const initialState = [
   Object.assign({}, Empty.ITEM, {itemId: 0}),
-  Object.assign({}, Empty.ITEM, {
+/*  Object.assign({}, Empty.ITEM, {
     itemId: 1,
     skuId: 'ABC-123', sku: 'ABC-123', value: 'ABC-123',
     productName: "Lorem epsum ololoolololo mountain dew",
@@ -25,7 +25,7 @@ const initialState = [
       tinyImg: "https://cdn6.bigcommerce.com/s-2e83t/products/3481/images/869/3-mtbn3xx_3__58804.1467947960.50.50.jpg?c=2",
       standardImg: "https://cdn6.bigcommerce.com/s-2e83t/products/3481/images/869/3-mtbn3xx_3__58804.1467947960.451.416.jpg?c=2"
     },
-  ),
+  ),*/
   /*   Object.assign({}, Empty.ITEM, {itemId: 3}),
    Object.assign({}, Empty.ITEM, {itemId: 4}),
    Object.assign({}, Empty.ITEM, {itemId: 5}),
@@ -70,7 +70,6 @@ export default function items(state = initialState, action) {
       return [...state.filter(item => item.itemId !== action.item.itemId)];
 
     case RESTORE_ITEMS:
-      debugger;
       return [...action.items];
 
     case CLEAR_ALL_ITEMS:
