@@ -1,19 +1,25 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const LOAD_PRODUCTS = 'products/LOAD_ALL';
 
-export default function products(state = [], action) {
+export default function products(state = {products: [], loading: true}, action) {
   switch (action.type) {
 
     case `${LOAD_PRODUCTS}_PENDING`:
-      return state;
+      return {
+        ...state,
+      };
     case `${LOAD_PRODUCTS}_FULFILLED`:
-      return action.payload.data._embedded.flatSkus;
+      return {
+        ...state,
+        loading: false,
+        products: action.payload.data._embedded.flatSkus
+      };
     case `${LOAD_PRODUCTS}_REJECTED`:
-      return state;
+      return {...state};
 
     default:
-      return state;
+      return {...state};
   }
 }
 

@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QUICK ORDER</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+
+    <link rel='canonical' href='http://taipancanada.com/quick-order.html'/>
+
+
+    <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Titillium+Web:400,900,700,600" rel="stylesheet" type="text/css">
+
+    <link rel="shortcut icon" href="http://cdn6.bigcommerce.com/s-2e83t/product_images/favicon-2.ico?t=1473262932"/>
+    <!-- begin: js page tag -->
+    <script language="javascript" type="text/javascript">//<![CDATA[
+    (function () {
+        // this happens before external dependencies (and dom ready) to reduce page flicker
+        var node, i;
+        for (i = window.document.childNodes.length; i--;) {
+            node = window.document.childNodes[i];
+            if (node.nodeName == 'HTML') {
+                node.className += ' javascript';
+            }
+        }
+    })();
+    //]]></script>
+    <!-- end: js page tag -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+    <link href="http://cdn5.bigcommerce.com/r-cc6e654da5450087a52e8bdb54d2be8bf00be88d/themes/__master/Styles/styles.css"
+          type="text/css" rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/Styles/styles.css?t=1485122090" media="all"
+          type="text/css" rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/Styles/iselector.css?t=1485122090" media="all"
+          type="text/css" rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/Styles/flexslider.css?t=1485122090" media="all"
+          type="text/css" rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/Styles/slide-show.css?t=1485122090" media="all"
+          type="text/css" rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/Styles/styles-slide-show.css?t=1485122090"
+          media="all" type="text/css" rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/Styles/social.css?t=1485122090" media="all"
+          type="text/css" rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/Styles/dark.css?t=1485122090" media="all"
+          type="text/css" rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/Styles/theme.css?t=1485122090" media="all"
+          type="text/css" rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/Styles/custom.css?t=1485122090" type="text/css"
+          rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/r-cc6e654da5450087a52e8bdb54d2be8bf00be88d/themes/__master/Styles/product.attributes.css"
+          type="text/css" rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/jquery/themes/cupertino/ui.all.css"
+          type="text/css" rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/r-2f0310c7f1a16f167417815e193c159bd0a69dbc/themes/GreaseMonkey/Styles/product.quickview.css"
+          type="text/css" rel="stylesheet"/>
+    <link href="http://cdn5.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/superfish/css/store.css"
+          type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet"
+          href="http://cdn5.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/jquery/plugins/imodal/imodal.css?ab9b5"/>
+
+    <!-- Tell the browsers about our RSS feeds -->
+    <link rel="alternate" type="application/rss+xml" title="Latest News (RSS 2.0)"
+          href="http://taipancanada.com/rss.php?action=newblogs&amp;type=rss"/>
+    <link rel="alternate" type="application/atom+xml" title="Latest News (Atom 0.3)"
+          href="http://taipancanada.com/rss.php?action=newblogs&amp;type=atom"/>
+    <link rel="alternate" type="application/rss+xml" title="New Products (RSS 2.0)"
+          href="http://taipancanada.com/rss.php?type=rss"/>
+    <link rel="alternate" type="application/atom+xml" title="New Products (Atom 0.3)"
+          href="http://taipancanada.com/rss.php?type=atom"/>
+    <link rel="alternate" type="application/rss+xml" title="Popular Products (RSS 2.0)"
+          href="http://taipancanada.com/rss.php?action=popularproducts&amp;type=rss"/>
+    <link rel="alternate" type="application/atom+xml" title="Popular Products (Atom 0.3)"
+          href="http://taipancanada.com/rss.php?action=popularproducts&amp;type=atom"/>
+
+
+    <!-- Include visitor tracking code (if any) -->
+    <!-- Start Tracking Code for analytics_googleanalytics -->
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-85325543-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+    <!-- End Tracking Code for analytics_googleanalytics -->
+
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,700italic,400italic|Oswald:400,700"
+          rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="http://cdn6.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/menudrop.js?"></script>
+    <script type="text/javascript"
+            src="http://cdn6.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/iselector.js?"></script>
+    <script type="text/javascript"
+            src="http://cdn6.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/jquery/plugins/jquery.flexslider.js"></script>
+    <script src="http://cdn6.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/viewport.js?"></script>
+
+    <!-- Template bespoke js -->
+    <script type="text/javascript"
+            src="http://cdn6.bigcommerce.com/r-2f0310c7f1a16f167417815e193c159bd0a69dbc/themes/GreaseMonkey/js/common.js"></script>
+    <script type="text/javascript"
+            src="http://cdn6.bigcommerce.com/r-2f0310c7f1a16f167417815e193c159bd0a69dbc/themes/GreaseMonkey/js/jquery.autobox.js"></script>
+    <script type="text/javascript"
+            src="http://cdn6.bigcommerce.com/r-2f0310c7f1a16f167417815e193c159bd0a69dbc/themes/GreaseMonkey/js/init.js"></script>
+    <script type="text/javascript"
+            src="http://cdn6.bigcommerce.com/r-2f0310c7f1a16f167417815e193c159bd0a69dbc/themes/GreaseMonkey/js/jquery.uniform.min.js"></script>
+    <script type="text/javascript"
+            src="http://cdn6.bigcommerce.com/r-2f0310c7f1a16f167417815e193c159bd0a69dbc/themes/GreaseMonkey/js/main.js?"></script>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        config.ShopPath = 'http://taipancanada.com';
+        config.AppPath = ''; // BIG-8939: Deprecated, do not use.
+        config.FastCart = 1;
+        config.ShowCookieWarning = !!0;
+        var ThumbImageWidth = 195;
+        var ThumbImageHeight = 195;
+        //]]>
+    </script>
+
+    <script type="text/javascript">
+        function beacon_deferred(beacon_api) {
+            beacon_api.set_cookie_domain(".taipancanada.com");
+            beacon_api.pageview('', 2204099, "other", {"customer": {"id": 545}}, 'cef76e3f246860f1a22675c06847dd0dd9ac417b', 'd6e84a73-3537-4a4f-a19a-57a7b608d5d5');
+        }
+    </script>
+    <script type="text/javascript">
+        (function () {
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.type = 'text/javascript';
+            g.defer = g.async = true;
+            g.src = 'http://cdn5.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/jirafe/beacon_api.js';
+            s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <script type="text/javascript"
+            src="http://cdn5.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/jquery/plugins/jqueryui/1.8.18/jquery-ui.min.js"></script>
+    <script type="text/javascript"
+            src="http://cdn5.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/quickview.js"></script>
+    <script type="text/javascript"
+            src="http://cdn5.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/jquery/plugins/jquery.form.js?ab9b5"></script>
+    <script type="text/javascript"
+            src="http://cdn5.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/jquery/plugins/imodal/imodal.js?ab9b5"></script>
+    <script type="text/javascript">
+        (function () {
+            window.bcanalytics || (window.bcanalytics = []), window.bcanalytics.methods = ["debug", "identify", "track",
+                "trackLink", "trackForm", "trackClick", "trackSubmit", "page", "pageview", "ab", "alias", "ready", "group",
+                "on", "once", "off", "initialize"], window.bcanalytics.factory = function (a) {
+                return function () {
+                    var b = Array.prototype.slice.call(arguments);
+                    return b.unshift(a), window.bcanalytics.push(b),
+                        window.bcanalytics
+                }
+            };
+            for (var i = 0; i < window.bcanalytics.methods.length; i++) {
+                var method = window.bcanalytics.methods[i];
+                window.bcanalytics[method] = window.bcanalytics.factory(method)
+            }
+            window.bcanalytics.load = function () {
+                var a = document.createElement("script");
+                a.type = "text/javascript",
+                    a.async = !0, a.src = "http://cdn5.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/app/assets/js/vendor/bigcommerce/analytics.min.js";
+                var b = document.getElementsByTagName("script")[0];
+                b.parentNode.insertBefore(a, b)
+            }, window.bcanalytics.SNIPPET_VERSION = "2.0.8", window.bcanalytics.load();
+            bcanalytics.initialize({
+                "Fornax": {
+                    "host": "https:\/\/analytics.bigcommerce.com",
+                    "cdn": "http:\/\/cdn5.bigcommerce.com\/r-214e375f7e7d817997a594df439e47dda85ca252\/app\/assets\/js\/vendor\/bigcommerce\/fornax.min.js",
+                    "defaultEventProperties": {
+                        "storeId": 991817,
+                        "experiments": {
+                            "PROJECT-174.channel_twitter": "control",
+                            "PROJECT-331.pos_manager": "on",
+                            "PROJECT-632.square_export": "on",
+                            "PROJECT-756.channel_pinterest": "on",
+                            "PROJECT-756.pinterest_complex_products": "on",
+                            "PROJECT-756.pinterest_material_options": "control",
+                            "PROJECT-783.channel_facebook": "on",
+                            "PROJECT-783.channel_facebook.disconnect": "on",
+                            "PROJECT-1245.amazon-payments.registration.eu": "control",
+                            "PROJECT-1245.amazon-payments.registration.us": "control",
+                            "OMNI-1010.channel_amazon.coming_soon": "on",
+                            "OMNI-913.channel_amazon": "on",
+                            "OMNI-1010.channel_ebay.coming_soon": "control",
+                            "OMNI-764.channel_ebay": "on",
+                            "OMNI-799.facebook_checkout": "on",
+                            "PROJECT-453.enterprise_apps": "on",
+                            "CP-78.cp_click_tracking": "control",
+                            "PROJECT-917.shipping-manager-v2": "on",
+                            "PROJECT-1082.promote_ppec": "on",
+                            "BIG-28672.shipstation": "on",
+                            "PROJECT-871.dashboard_redesign": "control",
+                            "ng-products": "control",
+                            "API-417.enable_api_oauth_account_creation": "on"
+                        }
+                    },
+                    "defaultContext": {"source": "Bigcommerce Storefront"},
+                    "anonymousId": "d6e84a73-3537-4a4f-a19a-57a7b608d5d5"
+                }
+            });
+        })();
+    </script>
+    <script type="text/javascript">
+        var BCData = {};
+    </script>
+
+    <script type="text/javascript"
+            src="http://cdn5.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/quicksearch.js"></script>
+
+</head>
+<body class="productPage">
+<script type="text/javascript"
+        src="http://cdn6.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/jquery/plugins/validate/jquery.validate.js?"></script>
+<script type="text/javascript"
+        src="http://cdn6.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/product.functionsrb.js?"></script>
+<script type="text/javascript"
+        src="http://cdn6.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/product.js?"></script>
+
+
+<div id="Container">
+    <div class="container header">
+        <div id="AjaxLoading"><img
+                src="http://cdn5.bigcommerce.com/s-2e83t/templates/__custom/images/ajax-loader.gif?t=1485122090"
+                alt=""/>&nbsp; Loading... Please wait...
+        </div>
+
+        <div id="TopMenu">
+            <div class="Center">
+                <ul style="display:">
+                    <!--<li >
+                        <div class="phoneIcon">Call us on 855-461-6293</div>
+                    </li>
+                    <li style="" class="HeaderLiveChat"></li>-->
+
+                    <!---->
+                    <li id="StorePhoneNumber2">
+                        <div class="phoneIcon">Call Toll Free 1.855.461.6293</div>
+                    </li>
+
+                    <li style="" class="HeaderLiveChat"></li>
+
+                    <!--Quick order customization: Start-->
+                    <li class="quick-order">
+                        <script type="text/javascript">
+                            var GlobalFname = "Andrii";
+
+                            if (GlobalFname != "" && GlobalFname != "Guest") {
+                                $('li.quick-order').html('<a href="http://taipancanada.com/quick-order.html">Quick order</a>');
+                            } else {
+                                $('li.quick-order').html('<a href="http://taipancanada.com/login.php">Quick order</a>');
+                            }
+                            ;
+                        </script>
+                    </li>
+                    <!--Quick order customization: End-->
+
+
+                    <li style="display:" class="First">
+                        <a href="http://taipancanada.com/account.php">My Account</a>
+                    </li>
+
+                    <li class="login-register">
+                        <script type="text/javascript">
+                            var GlobalFname = "Andrii";
+
+                            if (GlobalFname != "" && GlobalFname != "Guest") {
+                                $('li.login-register').html('<a href="http://taipancanada.com/login.php?action=logout">Log out</a>');
+                            } else {
+                                $('li.login-register').html('<a href="http://taipancanada.com/login.php">Log in</a>');
+
+                            }
+                            ;
+                        </script>
+                    </li>
+
+
+                    <!-- <li style="display:">
+                         <div id="log_in_options"><a href='http://taipancanada.com/login.php?action=logout'>Sign out</a></div>
+                     </li>-->
+                    <li class="last CartLink" style="display:">
+
+                        <script type="text/javascript">
+
+                            if (GlobalFname != "" && GlobalFname != "Guest") {
+                                $('li.CartLink').html('<i class="icon" title="View Cart">&nbsp;</i><a href="http://taipancanada.com/cart.php" title="View Cart"><span>Items / $0.00</span></a>');
+                            } else {
+
+                            }
+                            ;
+                        </script>
+
+
+                        <!--<i class="icon" title="View Cart">&nbsp;</i>
+                        <a href="http://taipancanada.com/cart.php" title="View Cart"><span>Items / $0.00</span></a>-->
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="Center">
+            <div id="Header" class="clearfix">
+                <div id="Logo"><a href="http://taipancanada.com/"><img
+                        src="http://cdn6.bigcommerce.com/s-2e83t/product_images/taipanna_1479411156__03567.png"
+                        border="0" id="LogoImage" alt="Taipan Canada"/></a>
+                </div>
+                <div class="right">
+                    <div id="SearchForm">
+                        <form action="http://taipancanada.com/search.php" method="get"
+                              onsubmit="return check_small_search_form()">
+                            <label for="search_query">Search</label>
+                            <input type="text" name="search_query" id="search_query" class="Textbox autobox"
+                                   value="Search"/>
+                            <input type="submit" class="Button" value="" name="Search" title="Search"/>
+                        </form>
+                    </div>
+                    <script type="text/javascript">
+                        var QuickSearchAlignment = 'right';
+                        var QuickSearchWidth = '390px';
+                        lang.EmptySmallSearch = "You forgot to enter some search keywords.";
+                    </script>
+
+                    <!--<div class="currency-converter">
+                        <p>All prices are in <a href="#">All prices are in <span title='Canadian Dollars'>CAD</span></a></p>
+
+          <div class="Block Moveable Panel CurrencyChooser" id="SideCurrencySelector">
+            <h2>Currency Converter</h2>
+            <div class="selected-currency">
+                <br class="Clear" />
+            </div>
+            <div class="BlockContent">
+                <dl class="CurrencyList">
+                        <dd class="ChooseCurrencyBox" style="">
+            <a href="/quick-order.html?setCurrencyId=1" class="Sel">
+                <span class="Flag"><img src="http://cdn6.bigcommerce.com/s-2e83t/lib/flags/ca.gif" border="0" alt="Canada" /></span>
+                <span class="Text">Canadian Dollars</span>
+            </a>
+          </dd>
+                </dl>
+            </div>
+          </div>
+                    </div>-->
+                    <div class="Block Panel PageMenu">
+                        <div class="CategoryList" id="SideCategoryList">
+                            <h3>Categories</h3>
+                            <div class="BlockContent">
+                                <div class="SideCategoryListFlyout">
+                                    <ul class="sf-menu sf-horizontal">
+                                        <li><a href="http://taipancanada.com/taipan-products/">TAIPAN ABRASIVES</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/taipan-abrasive-cutting-tools/cutting-discs.html">CUTTING
+                                                        DISCS</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/abrasives-cutting-tools/grinding-discs/">GRINDING
+                                                        DISCS</a></li>
+                                                <li><a href="http://taipancanada.com/taipan-products/flap-discs/">FLAP
+                                                    DISCS</a></li>
+                                                <li><a href="http://taipancanada.com/taipan-products/wire-brushes/">WIRE
+                                                    BRUSHES</a></li>
+                                                <li><a href="http://taipancanada.com/taipan-products/saw-wheels/">SAW
+                                                    WHEELS</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/abrasive-cutting-tools/flap-wheel.html">FLAP
+                                                        WHEELS</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/taipan-abrasives/fiber-discs.html">FIBER
+                                                        DISCS</a></li>
+                                                <li><a href="http://taipancanada.com/taipan-products/carbide-burrs/">CARBIDE
+                                                    BURRS</a></li>
+                                                <li><a href="http://taipancanada.com/taipan-products/annular-cutters/">ANNULAR
+                                                    CUTTERS</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/abrasive-cutting-tools/surface-conditioning-non-woven-products.html">SURFACE
+                                                        CONDITIONING</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/taipan-abrasives/deburring-wheels.html">DEBURRING
+                                                        WHEELS</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/abrasive-cutting-tools/fibre-discs/quick-change-discs.html">QUICK
+                                                        CHANGE DISCS</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/abrasive-cutting-tools/grinding-discs/mounted-points.html">MOUNTED
+                                                        POINTS</a></li>
+                                                <li><a href="http://taipancanada.com/taipan-products/drill-bits/">DRILL
+                                                    BITS</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/abrasive-cutting-tools/deburring-wheels/non-woven-hand-pads.html">HAND
+                                                        PADS</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/abrasive-cutting-tools/fibre-discs/accessories.html">ACCESSORIES</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/abrasive-cutting-tools/accessories/mandrels.html">MANDRELS</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/abrasive-cutting-tools/accessories/power-tools.html">POWER
+                                                                TOOLS</a></li>
+
+                                                    </ul>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                        <li><a href="http://taipancanada.com/categories/welding-products.html">WELDING
+                                            CONSUMABLES</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-products/mig-torches.html">MIG
+                                                        TORCHES</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/mig-torches/bernard-style.html">BERNARD
+                                                                STYLE</a></li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/mig-torches/parweld-xp8.html">PARWELD
+                                                                XP8</a></li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-consumables/mig-torches/tregaskiss-style.html">TREGASKISS
+                                                                STYLE</a></li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/mig-torches/tweco-style.html">TWECO
+                                                                STYLE</a></li>
+
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables.html">MIG
+                                                        CONSUMABLES</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/mig-consumables/contact-tips.html">CONTACT
+                                                                TIPS</a>
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/contact-tips/bernard.html">BERNARD</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/contact-tips/miller.html">MILLER</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/contact-tips/tregaskiss.html">TREGASKISS</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/contact-tips/tweco.html">TWECO</a>
+                                                                </li>
+
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-consumables/mig-consumables/diffusers-retaining-heads.html">DIFFUSERS
+                                                                / RETAINING HEADS</a></li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/mig-consumables/liners.html">LINERS</a>
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/liners/bernard.html">BERNARD</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/liners/tregaskiss.html">TREGASKISS</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/liners/tweco.html">TWECO</a>
+                                                                </li>
+
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/mig-consumables/nozzles.html">NOZZLES</a>
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/nozzles/bernard.html">BERNARD</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/nozzles/tregaskiss-nozzles.html">TREGASKISS</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/nozzles/tweco.html">TWECO</a>
+                                                                </li>
+
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/mig-consumables/power-cable.html">POWER
+                                                                CABLE</a>
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/power-cable/bernard.html">BERNARD</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/power-cable/tregaskiss.html">TREGASKISS</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="http://taipancanada.com/categories/welding-products/mig-consumables/power-cable/tweco.html">TWECO</a>
+                                                                </li>
+
+                                                            </ul>
+                                                        </li>
+
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-products/mig-accessories.html">MIG
+                                                        ACCESSORIES</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/mig-accessories/bernard.html">BERNARD</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/mig-accessories/tregaskiss.html">TREGASKISS</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/mig-accessories/tweco.html">TWECO</a>
+                                                        </li>
+
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-products/tig-torches.html">TIG
+                                                        TORCHES</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/tig-torches/tig-torch-head-body.html">TIG
+                                                                TORCH HEAD / BODY</a></li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-consumables/tig-torches/tig-torches.html">TIG
+                                                                TORCHES</a></li>
+
+                                                    </ul>
+                                                </li>
+                                                <li><a href="http://taipancanada.com/categories/tig-consumables.html">TIG
+                                                    CONSUMABLES</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-products/tig-accessories.html">TIG
+                                                        ACCESSORIES</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-consumables/tungsten.html">TUNGSTEN</a>
+                                                </li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-products/gas-hose-accessories.html">GAS
+                                                        HOSE / ACCESSORIES</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/all-products/gas-welding-cutting-tips.html">GAS
+                                                        WELDING</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/gas-welding-cutting-tips/welding-nozzle.html">NOZZLES</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-consumables/gas-welding/tips.html">TIPS</a>
+                                                        </li>
+
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-products/quick-connects-flashback-arrestors.html">QUICK
+                                                        CONNECTS</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-products/regulators.html">REGULATORS</a>
+                                                </li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-products/plasma-consumables.html">PLASMA
+                                                        CONSUMABLES</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-consumables/wire-electrode.html">WIRE
+                                                        / ELECTRODE</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-tools-accessories.html">TOOLS
+                                                        / ACCESSORIES</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/welding-tools-accessories/flint-strikers.html">FLINT
+                                                                STRIKERS</a></li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/welding-supplies-and-consumables/ground-clamps.html">GROUND
+                                                                CLAMPS</a></li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/welding-tools-accessories/hammers.html">HAMMERS</a>
+                                                        </li>
+                                                        <li><a href="http://taipancanada.com/categories/guages.html">GUAGES</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/welding-tools-accessories/mig-pliers.html">MIG
+                                                                PLIERS</a></li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/welding-tools-accessories/soap-stone.html">SOAP
+                                                                STONE</a></li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/welding-supplies-and-consumables/electrode-holders.html">ELECTRODE
+                                                                HOLDERS</a></li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/welding-supplies-and-consumables/cable-connectors.html">CABLE
+                                                                CONNECTORS</a></li>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/welding-supplies-and-consumables/accessories.html">ACCESSORIES</a>
+                                                        </li>
+
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-products/welding-cable-accessories.html">CABLE
+                                                        / ACCESSORIES</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="http://taipancanada.com/categories/welding-products/welding-supplies-and-consumables/cable-lugs.html">CABLE
+                                                                LUGS</a></li>
+
+                                                    </ul>
+                                                </li>
+                                                <li><a href="http://taipancanada.com/categories/electrode-carbons.html">GOUGING
+                                                    TORCH/CARBONS</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-products/chemicals.html">CHEMICALS</a>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                        <li><a href="http://taipancanada.com/categories/welding-safety.html">WELDING
+                                            SAFETY</a>
+                                            <ul>
+                                                <li><a href="http://taipancanada.com/categories/aprons-spats.html">APRONS
+                                                    / SPATS</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-safety/hoods.html">HOODS</a>
+                                                </li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/helmets.html">HELMETS</a>
+                                                </li>
+                                                <li><a href="http://taipancanada.com/categories/glasses.html">EYE
+                                                    PROTECTION</a></li>
+                                                <li><a href="http://taipancanada.com/categories/screens-curtains.html">SCREENS
+                                                    / CURTAINS</a></li>
+                                                <li><a href="http://taipancanada.com/categories/lenses.html">LENSES</a>
+                                                </li>
+                                                <li><a href="http://taipancanada.com/categories/gloves.html">GLOVES</a>
+                                                </li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/welding-safety/welding-jackets.html">WELDING
+                                                        JACKETS</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <li><a href="http://taipancanada.com/categories/polishing-products.html">POLISHING
+                                            PRODUCTS</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/polishing-products/airway-buffing-wheels.html">BUFFING
+                                                        WHEELS - AIRWAY</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/polishing-products/loose-buffing-wheel.html">BUFFING
+                                                        WHEELS - LOOSE</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/polishing-products/sewn-buffing-wheels.html">BUFFING
+                                                        WHEELS - SEWN</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/polishing-products/buffing-wheels-sisal.html">BUFFING
+                                                        WHEELS - SISAL</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/polishing-products/compound.html">POLISHING
+                                                        COMPOUNDS</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/polishing-products/liquid-polish.html">LIQUID
+                                                        POLISH</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/polishing-products/sanding-discs-psa-velcro.html">SANDING
+                                                        DISCS - PSA / VELCRO</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/polishing-products/wheel-grease.html">WHEEL
+                                                        GREASE</a></li>
+                                                <li>
+                                                    <a href="http://taipancanada.com/categories/polishing-products/polishing-cleaning-accessories.html">ACCESSORIES</a>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div id="Menu">
+            <ul class="sf-menu sf-horizontal sf-js-enabled">
+                    <li class=" ActivePage" style="text-transform:uppercase;">
+                <a href="http://taipancanada.com/quick-order.html"><span>QUICK ORDER</span></a>
+
+            </li>	<li class=" " style="text-transform:uppercase;">
+                <a href="http://taipancanada.com/pages/about-us.html"><span>ABOUT US</span></a>
+
+            </li>	<li class=" " style="text-transform:uppercase;">
+                <a href="http://taipancanada.com/contact-us/"><span>CONTACT US</span></a>
+
+            </li>	<li class=" " style="text-transform:uppercase;">
+                <a href="http://taipancanada.com/pages/safety.html"><span>GLOBAL</span></a>
+
+            </li>	<li class=" " style="text-transform:uppercase;">
+                <a href="http://taipancanada.com/pages/support.html"><span>SUPPORT</span></a>
+
+            </li>	<li class=" " style="text-transform:uppercase;">
+                <a href="http://taipancanada.com/pages/the-snake.html"><span>THE SNAKE</span></a>
+
+            </li>	<li class=" " style="text-transform:uppercase;">
+                <a href="http://taipancanada.com/blog/"><span>Taipan Blog</span></a>
+
+            </li>
+            </ul>
+            </div>
+            -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="Center"><h1>QUICK ORDER</h1>
+            <p>Using this service you can quickly compile a list of items from our extensive catalog of products.</p>
+            <ol>
+                <li>Simply enter the Taipan item number in the Item # box.</li>
+                <li>Enter the desired quantity to quickly see a total amount.</li>
+                <li>Once complete you can click PLACE ORDER to move your list into an order or click on PRINT LIST to
+                    save a copy as a Quick Quote reference page.
+                </li>
+            </ol>
+            <p></p>
+        </div>
+        <div id="app"></div>
+    </div>
+</div>
+<div class="clear">&nbsp;</div>
+</div><!-- end Container -->
+
+<div id="ContainerFooter" class="container footer">
+    <div class="Center">
+        <div id="FooterUpper">
+            <!--<div class="Column"><div class="Block Moveable Panel" id="SideShopByBrand" style="display:none;"></div></div>-->
+            <div class="Column">
+                <div class="Block CategoryList Panel">
+                    <h4>TAIPAN CANADA</h4>
+                    <div class="BlockContent">
+                        <ul class="sf-menu sf-horizontal sf-js-enabled">
+                            <li class=" ActivePage" style="text-transform:uppercase;">
+                                <a href="http://taipancanada.com/quick-order.html"><span>QUICK ORDER</span></a>
+
+                            </li>
+                            <li class=" " style="text-transform:uppercase;">
+                                <a href="http://taipancanada.com/pages/about-us.html"><span>ABOUT US</span></a>
+
+                            </li>
+                            <li class=" " style="text-transform:uppercase;">
+                                <a href="http://taipancanada.com/contact-us/"><span>CONTACT US</span></a>
+
+                            </li>
+                            <li class=" " style="text-transform:uppercase;">
+                                <a href="http://taipancanada.com/pages/safety.html"><span>GLOBAL</span></a>
+
+                            </li>
+                            <li class=" " style="text-transform:uppercase;">
+                                <a href="http://taipancanada.com/pages/support.html"><span>SUPPORT</span></a>
+
+                            </li>
+                            <li class=" " style="text-transform:uppercase;">
+                                <a href="http://taipancanada.com/pages/the-snake.html"><span>THE SNAKE</span></a>
+
+                            </li>
+                            <li class=" " style="text-transform:uppercase;">
+                                <a href="http://taipancanada.com/blog/"><span>Taipan Blog</span></a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--
+                <div id="Menu">
+                    <ul class="sf-menu sf-horizontal sf-js-enabled">
+                            <li class=" ActivePage" style="text-transform:uppercase;">
+                        <a href="http://taipancanada.com/quick-order.html"><span>QUICK ORDER</span></a>
+
+                    </li>	<li class=" " style="text-transform:uppercase;">
+                        <a href="http://taipancanada.com/pages/about-us.html"><span>ABOUT US</span></a>
+
+                    </li>	<li class=" " style="text-transform:uppercase;">
+                        <a href="http://taipancanada.com/contact-us/"><span>CONTACT US</span></a>
+
+                    </li>	<li class=" " style="text-transform:uppercase;">
+                        <a href="http://taipancanada.com/pages/safety.html"><span>GLOBAL</span></a>
+
+                    </li>	<li class=" " style="text-transform:uppercase;">
+                        <a href="http://taipancanada.com/pages/support.html"><span>SUPPORT</span></a>
+
+                    </li>	<li class=" " style="text-transform:uppercase;">
+                        <a href="http://taipancanada.com/pages/the-snake.html"><span>THE SNAKE</span></a>
+
+                    </li>	<li class=" " style="text-transform:uppercase;">
+                        <a href="http://taipancanada.com/blog/"><span>Taipan Blog</span></a>
+
+                    </li>
+                    </ul>
+                </div>
+
+                -->
+            </div>
+            <div class="Column">
+                <div class="Block CategoryList Panel">
+                    <h4>Categories</h4>
+                    <div class="BlockContent">
+                        <ul class="sf-menu sf-horizontal">
+                            <li><a href="http://taipancanada.com/taipan-products/">TAIPAN ABRASIVES</a>
+                                <ul>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/taipan-abrasive-cutting-tools/cutting-discs.html">CUTTING
+                                            DISCS</a></li>
+                                    <li><a href="http://taipancanada.com/abrasives-cutting-tools/grinding-discs/">GRINDING
+                                        DISCS</a></li>
+                                    <li><a href="http://taipancanada.com/taipan-products/flap-discs/">FLAP DISCS</a>
+                                    </li>
+                                    <li><a href="http://taipancanada.com/taipan-products/wire-brushes/">WIRE BRUSHES</a>
+                                    </li>
+                                    <li><a href="http://taipancanada.com/taipan-products/saw-wheels/">SAW WHEELS</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/abrasive-cutting-tools/flap-wheel.html">FLAP
+                                            WHEELS</a></li>
+                                    <li><a href="http://taipancanada.com/categories/taipan-abrasives/fiber-discs.html">FIBER
+                                        DISCS</a></li>
+                                    <li><a href="http://taipancanada.com/taipan-products/carbide-burrs/">CARBIDE
+                                        BURRS</a></li>
+                                    <li><a href="http://taipancanada.com/taipan-products/annular-cutters/">ANNULAR
+                                        CUTTERS</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/abrasive-cutting-tools/surface-conditioning-non-woven-products.html">SURFACE
+                                            CONDITIONING</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/taipan-abrasives/deburring-wheels.html">DEBURRING
+                                            WHEELS</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/abrasive-cutting-tools/fibre-discs/quick-change-discs.html">QUICK
+                                            CHANGE DISCS</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/abrasive-cutting-tools/grinding-discs/mounted-points.html">MOUNTED
+                                            POINTS</a></li>
+                                    <li><a href="http://taipancanada.com/taipan-products/drill-bits/">DRILL BITS</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/abrasive-cutting-tools/deburring-wheels/non-woven-hand-pads.html">HAND
+                                            PADS</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/abrasive-cutting-tools/fibre-discs/accessories.html">ACCESSORIES</a>
+                                        <ul>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/abrasive-cutting-tools/accessories/mandrels.html">MANDRELS</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/abrasive-cutting-tools/accessories/power-tools.html">POWER
+                                                    TOOLS</a></li>
+
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li><a href="http://taipancanada.com/categories/welding-products.html">WELDING
+                                CONSUMABLES</a>
+                                <ul>
+                                    <li><a href="http://taipancanada.com/categories/welding-products/mig-torches.html">MIG
+                                        TORCHES</a>
+                                        <ul>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/mig-torches/bernard-style.html">BERNARD
+                                                    STYLE</a></li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/mig-torches/parweld-xp8.html">PARWELD
+                                                    XP8</a></li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-consumables/mig-torches/tregaskiss-style.html">TREGASKISS
+                                                    STYLE</a></li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/mig-torches/tweco-style.html">TWECO
+                                                    STYLE</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables.html">MIG
+                                            CONSUMABLES</a>
+                                        <ul>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/mig-consumables/contact-tips.html">CONTACT
+                                                    TIPS</a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/contact-tips/bernard.html">BERNARD</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/contact-tips/miller.html">MILLER</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/contact-tips/tregaskiss.html">TREGASKISS</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/contact-tips/tweco.html">TWECO</a>
+                                                    </li>
+
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-consumables/mig-consumables/diffusers-retaining-heads.html">DIFFUSERS
+                                                    / RETAINING HEADS</a></li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/mig-consumables/liners.html">LINERS</a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/liners/bernard.html">BERNARD</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/liners/tregaskiss.html">TREGASKISS</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/liners/tweco.html">TWECO</a>
+                                                    </li>
+
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/mig-consumables/nozzles.html">NOZZLES</a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/nozzles/bernard.html">BERNARD</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/nozzles/tregaskiss-nozzles.html">TREGASKISS</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/nozzles/tweco.html">TWECO</a>
+                                                    </li>
+
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/mig-consumables/power-cable.html">POWER
+                                                    CABLE</a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/power-cable/bernard.html">BERNARD</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/power-cable/tregaskiss.html">TREGASKISS</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="http://taipancanada.com/categories/welding-products/mig-consumables/power-cable/tweco.html">TWECO</a>
+                                                    </li>
+
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/welding-products/mig-accessories.html">MIG
+                                            ACCESSORIES</a>
+                                        <ul>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/mig-accessories/bernard.html">BERNARD</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/mig-accessories/tregaskiss.html">TREGASKISS</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/mig-accessories/tweco.html">TWECO</a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    <li><a href="http://taipancanada.com/categories/welding-products/tig-torches.html">TIG
+                                        TORCHES</a>
+                                        <ul>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/tig-torches/tig-torch-head-body.html">TIG
+                                                    TORCH HEAD / BODY</a></li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-consumables/tig-torches/tig-torches.html">TIG
+                                                    TORCHES</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li><a href="http://taipancanada.com/categories/tig-consumables.html">TIG
+                                        CONSUMABLES</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/welding-products/tig-accessories.html">TIG
+                                            ACCESSORIES</a></li>
+                                    <li><a href="http://taipancanada.com/categories/welding-consumables/tungsten.html">TUNGSTEN</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/welding-products/gas-hose-accessories.html">GAS
+                                            HOSE / ACCESSORIES</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/all-products/gas-welding-cutting-tips.html">GAS
+                                            WELDING</a>
+                                        <ul>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/gas-welding-cutting-tips/welding-nozzle.html">NOZZLES</a>
+                                            </li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-consumables/gas-welding/tips.html">TIPS</a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/welding-products/quick-connects-flashback-arrestors.html">QUICK
+                                            CONNECTS</a></li>
+                                    <li><a href="http://taipancanada.com/categories/welding-products/regulators.html">REGULATORS</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/welding-products/plasma-consumables.html">PLASMA
+                                            CONSUMABLES</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/welding-consumables/wire-electrode.html">WIRE
+                                            / ELECTRODE</a></li>
+                                    <li><a href="http://taipancanada.com/categories/welding-tools-accessories.html">TOOLS
+                                        / ACCESSORIES</a>
+                                        <ul>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/welding-tools-accessories/flint-strikers.html">FLINT
+                                                    STRIKERS</a></li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/welding-supplies-and-consumables/ground-clamps.html">GROUND
+                                                    CLAMPS</a></li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/welding-tools-accessories/hammers.html">HAMMERS</a>
+                                            </li>
+                                            <li><a href="http://taipancanada.com/categories/guages.html">GUAGES</a></li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/welding-tools-accessories/mig-pliers.html">MIG
+                                                    PLIERS</a></li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/welding-tools-accessories/soap-stone.html">SOAP
+                                                    STONE</a></li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/welding-supplies-and-consumables/electrode-holders.html">ELECTRODE
+                                                    HOLDERS</a></li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/welding-supplies-and-consumables/cable-connectors.html">CABLE
+                                                    CONNECTORS</a></li>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/welding-supplies-and-consumables/accessories.html">ACCESSORIES</a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/welding-products/welding-cable-accessories.html">CABLE
+                                            / ACCESSORIES</a>
+                                        <ul>
+                                            <li>
+                                                <a href="http://taipancanada.com/categories/welding-products/welding-supplies-and-consumables/cable-lugs.html">CABLE
+                                                    LUGS</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li><a href="http://taipancanada.com/categories/electrode-carbons.html">GOUGING
+                                        TORCH/CARBONS</a></li>
+                                    <li><a href="http://taipancanada.com/categories/welding-products/chemicals.html">CHEMICALS</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li><a href="http://taipancanada.com/categories/welding-safety.html">WELDING SAFETY</a>
+                                <ul>
+                                    <li><a href="http://taipancanada.com/categories/aprons-spats.html">APRONS /
+                                        SPATS</a></li>
+                                    <li><a href="http://taipancanada.com/categories/welding-safety/hoods.html">HOODS</a>
+                                    </li>
+                                    <li><a href="http://taipancanada.com/categories/helmets.html">HELMETS</a></li>
+                                    <li><a href="http://taipancanada.com/categories/glasses.html">EYE PROTECTION</a>
+                                    </li>
+                                    <li><a href="http://taipancanada.com/categories/screens-curtains.html">SCREENS /
+                                        CURTAINS</a></li>
+                                    <li><a href="http://taipancanada.com/categories/lenses.html">LENSES</a></li>
+                                    <li><a href="http://taipancanada.com/categories/gloves.html">GLOVES</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/welding-safety/welding-jackets.html">WELDING
+                                            JACKETS</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a href="http://taipancanada.com/categories/polishing-products.html">POLISHING
+                                PRODUCTS</a>
+                                <ul>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/polishing-products/airway-buffing-wheels.html">BUFFING
+                                            WHEELS - AIRWAY</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/polishing-products/loose-buffing-wheel.html">BUFFING
+                                            WHEELS - LOOSE</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/polishing-products/sewn-buffing-wheels.html">BUFFING
+                                            WHEELS - SEWN</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/polishing-products/buffing-wheels-sisal.html">BUFFING
+                                            WHEELS - SISAL</a></li>
+                                    <li><a href="http://taipancanada.com/categories/polishing-products/compound.html">POLISHING
+                                        COMPOUNDS</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/polishing-products/liquid-polish.html">LIQUID
+                                            POLISH</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/polishing-products/sanding-discs-psa-velcro.html">SANDING
+                                            DISCS - PSA / VELCRO</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/polishing-products/wheel-grease.html">WHEEL
+                                            GREASE</a></li>
+                                    <li>
+                                        <a href="http://taipancanada.com/categories/polishing-products/polishing-cleaning-accessories.html">ACCESSORIES</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                        <strong class="afterSideCategoryList"><a href="/categories/">View all categories</a></strong>
+                    </div>
+                </div>
+            </div>
+            <div class="Column">
+                <div class="Block RecentNews Moveable Panel" id="HomeRecentBlogs" style="display:">
+                    <h4>TAIPAN BLOG <!--Recent Updates--></h4>
+                    <div class="BlockContent">
+                        <ul>
+                            <li>
+                                <a href="http://taipancanada.com/blog/stafda-40th-annual-convention-trade-show/"><strong>STAFDA
+                                    40th ANNUAL CONVENTION &amp; TRADE SHOW</strong></a>
+                                <p>Taipan Canada is now a certified member of the Specialty
+                                    Tools &amp; Fasteners &hellip;</p>
+                            </li>
+                            <li>
+                                <a href="http://taipancanada.com/blog/visit-us-at-canweld-expo-2016/"><strong>VISIT US
+                                    AT CANWELD EXPO 2016!</strong></a>
+                                <p>Were looking forward to meeting you at the CanWeld Expo next week. We'll
+                                    be &hellip;</p>
+                            </li>
+                            <li>
+                                <a href="http://taipancanada.com/blog/submit-feedback-and-receive-a-tim-hortons-gift-card/"><strong>SUBMIT
+                                    FEEDBACK AND RECEIVE A TIM HORTONS GIFT CARD!</strong></a>
+                                <p>Click here to submit your response: &hellip;</p>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="Column">
+                <div id="socnet" class="Block SocialConnect Moveable Panel">
+                    <h4>Connect with us</h4>
+                    <ul>
+                        <li class="li-twitter"><a href="https://twitter.com/TaipanCanada" target="_blank"
+                                                  class="icon icon-social icon-social-theme icon-twitter"
+                                                  title="Twitter">Twitter</a></li>
+                        <li class="li-facebook"><a href="https://www.facebook.com/TheBrandWithBite/" target="_blank"
+                                                   class="icon icon-social icon-social-theme icon-facebook"
+                                                   title="Facebook">Facebook</a></li>
+                        <li class="li-linkedin"><a
+                                href="https://www.linkedin.com/company/3616911?trk=tyah&trkInfo=clickedVertical%3Acompany%2CentityType%3AentityHistoryName%2CclickedEntityId%3Acompany_3616911%2Cidx%3A3"
+                                target="_blank" class="icon icon-social icon-social-theme icon-linkedin"
+                                title="LinkedIn">LinkedIn</a></li>
+                        <li class="li-youtube"><a href="https://www.youtube.com/channel/UCBR3BDZDglTKhaHmSETHe7g"
+                                                  target="_blank"
+                                                  class="icon icon-social icon-social-theme icon-youtube"
+                                                  title="YouTube">YouTube</a></li>
+
+                    </ul>
+                </div>
+
+
+                <!--div class="Block SocialConnect Moveable Panel">
+                        <h2>Connect with us</h2>
+                        <div class="BlockContent">
+                            <ul>
+                                <li class="fb"><a href="#" title=""></a></li>
+                                <li class="tweet"><a href="#" title=""></a></li>
+                                <li class="youtube"><a href="#" title=""></a></li>
+                                <li class="gplus"><a href="#" title=""></a></li>
+                                <li class="pinterest"><a href="#" title=""></a></li>
+                                <li><a href="#" title=""></a></li>
+                                <li class="linkedin"><a href="#" title=""></a></li>
+                                <li class="tumblr"><a href="#" title=""></a></li>
+                                <li class="rss"><a href="#" title=""></a></li>
+                            </ul>
+                        </div>
+                    </div --></div>
+            <div class="Column NewsletterColumn">
+                <div class="Block NewsletterSubscription Moveable Panel" id="SideNewsletterBox">
+
+                    <h4>Newsletter</h4>
+
+                    <div class="BlockContent">
+                        <form action="http://taipancanada.com/subscribe.php" method="post" id="subscribe_form"
+                              name="subscribe_form">
+                            <input type="hidden" name="action" value="subscribe"/>
+                            <ul>
+                                <li class="inputForm">
+                                    <label for="nl_first_name">Name</label>
+                                    <input class="Textbox autobox" value="Name" id="nl_first_name" name="nl_first_name"
+                                           type="text"/>
+                                </li>
+                                <li class="inputForm">
+                                    <label for="nl_email">Email</label>
+                                    <input class="Textbox autobox" value="Email" id="nl_email" name="nl_email"
+                                           type="text"/>
+                                </li>
+                                <li>
+
+                                    <input value="Submit" class="btn alt" type="submit"/>
+
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    // <!--
+                    $('#subscribe_form').submit(function () {
+                        if ($('#nl_first_name').val() == '') {
+                            alert('You forgot to type in your first name.');
+                            $('#nl_first_name').focus();
+                            return false;
+                        }
+
+                        if ($('#nl_email').val() == '') {
+                            alert('You forgot to type in your email address.');
+                            $('#nl_email').focus();
+                            return false;
+                        }
+
+                        if ($('#nl_email').val().indexOf('@') == -1 || $('#nl_email').val().indexOf('.') == -1) {
+                            alert('Please enter a valid email address, such as john@example.com.');
+                            $('#nl_email').focus();
+                            $('#nl_email').select();
+                            return false;
+                        }
+
+                        // Set the action of the form to stop spammers
+                        $('#subscribe_form').append("<input type=\"hidden\" name=\"check\" value=\"1\" \/>");
+                        return true;
+
+                    });
+                    // -->
+                </script>
+
+            </div>
+        </div>
+        <div id="Footer">
+            <!--<div class="PageMenu"><div id="Menu">
+      <ul class="sf-menu sf-horizontal sf-js-enabled">
+        <li class=" ActivePage" style="text-transform:uppercase;">
+      <a href="http://taipancanada.com/quick-order.html"><span>QUICK ORDER</span></a>
+
+      </li>	<li class=" " style="text-transform:uppercase;">
+      <a href="http://taipancanada.com/pages/about-us.html"><span>ABOUT US</span></a>
+
+      </li>	<li class=" " style="text-transform:uppercase;">
+      <a href="http://taipancanada.com/contact-us/"><span>CONTACT US</span></a>
+
+      </li>	<li class=" " style="text-transform:uppercase;">
+      <a href="http://taipancanada.com/pages/safety.html"><span>GLOBAL</span></a>
+
+      </li>	<li class=" " style="text-transform:uppercase;">
+      <a href="http://taipancanada.com/pages/support.html"><span>SUPPORT</span></a>
+
+      </li>	<li class=" " style="text-transform:uppercase;">
+      <a href="http://taipancanada.com/pages/the-snake.html"><span>THE SNAKE</span></a>
+
+      </li>	<li class=" " style="text-transform:uppercase;">
+      <a href="http://taipancanada.com/blog/"><span>Taipan Blog</span></a>
+
+      </li>
+      </ul>
+      </div>
+      </div>-->
+            <p style="width:100%;"><span> <a href="https://www.cwa-acs.org/" target="_blank"
+                                             style="border-bottom:none !important;"> <img
+                    src="http://cdn6.bigcommerce.com/s-2e83t/templates/__custom/images/theme/CWA.PNG?t=1485122090"
+                    style="height:60px; padding:4px;"></a><a href="https://www.stafda.org/" target="_blank"
+                                                             style="border-bottom:none !important;"><img
+                    src="http://cdn6.bigcommerce.com/s-2e83t/templates/__custom/images/theme/STAFDA.JPG?t=1485122090"
+                    style="height:46px; padding:4px;"></a></span><br>
+                <!--<span id="currencyPrices">All prices are in <span title='Canadian Dollars'>CAD</span>.</span>--> &copy;
+                2017 Taipan Canada.
+                <a href="http://taipancanada.com/sitemap/"><span>Sitemap</span></a> |</p>
+
+        </div>
+    </div>
+    <br class="Clear"/>
+</div>
+<div style="display: none;"></div>
+
+
+<script type="text/javascript">
+    //$(document).ready( function() {
+    //$('.ProductPriceRating em:contains("$0.00")').text("Login for Cost");
+    //$('.ProductPrice:contains("$0.00")').text("Login for Dealer Pricing");
+    //$('.ProductPrice:contains("$0.00")').text("");
+    //})
+
+    $(document).ready(function () {
+        $(".ProductList .ProductActionAdd a:contains('Choose Options')").text("View Details / Order");
+    });
+
+    $(document).ready(function () {
+        $(".ProductList .ProductActionAdd a:contains('Add To Cart')").text("Order");
+    });
+
+    $(document).ready(function () {
+        $(".Breadcrumb li:contains('Your Shopping Cart')").text("Your Order");
+    });
+
+    $(document).ready(function () {
+        $(".KeepShopping a:contains('Click here to keep shopping')").text("Add More Products?");
+    });
+
+    $(document).ready(function () {
+        $(".CouponCode h3:contains('Coupon Code')").text("Promo Code");
+    });
+
+    $(document).ready(function () {
+        $(".CouponCode p:contains('If you have a coupon code, enter it in the box below and click 'Go'.')").text("If you have a promo code, enter it in the box below and click 'Go'.");
+    });
+
+    //$(document).ready(function(){
+    //$(".codeUno label:contains('Gift Certificate or Coupon Code:')").text("Promo Code");
+    //});
+
+    $(document).ready(function () {
+        $(".CheckoutRedeemCoupon").css('display', 'none');
+//alert ('hi')
+    });
+
+    $(document).ready(function () {
+        $(".checkout_provider_checkout_cheque label:contains('Gift Certificate or Coupon Code:')").text("Promo Code");
+    });
+
+    $(document).ready(function () {
+        $(".CouponCode").remove();
+    });
+
+    //$(document).ready(function(){
+    //$(".CheckoutRedeemCoupon").hide();
+    //});
+
+    $(document).ready(function () {
+        $("#uniform-checkout_provider_checkout_cheque").hide();
+        $("#checkout_provider_checkout_cheque").attr("checked", true);
+//$( ".radio span" ).hide();
+    });
+
+    $(document).ready(function () {
+        $(".ProviderNamecheckout_testgateway").hide();
+    });
+
+
+</script>
+
+
+<script type="text/javascript"
+        src="http://cdn5.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/superfish/js/jquery.bgiframe.min.js"></script>
+<script type="text/javascript"
+        src="http://cdn5.bigcommerce.com/r-214e375f7e7d817997a594df439e47dda85ca252/javascript/superfish/js/superfish.js"></script>
+<script type="text/javascript">
+    $(function () {
+        if (typeof $.fn.superfish == "function") {
+            $("ul.sf-menu").superfish({
+                delay: 600,
+                dropShadows: false,
+                speed: "fast"
+            })
+                .find("ul")
+                .bgIframe();
+        }
+    })
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // attach fast cart event to all 'add to cart' link
+        $(".ProductActionAdd a[href*='cart.php?action=add']").click(function (event) {
+            fastCartAction($(this).attr('href'));
+            return false;
+        });
+    });
+</script>
+
+
+</div>
+</body>
+</html>

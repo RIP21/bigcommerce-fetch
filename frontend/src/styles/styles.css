@@ -1,5 +1,11 @@
+.loading {
+    fill: #db0000;
+    height: auto;
+    width: 300px;
+    margin: auto;
+}
+
 .react-autosuggest__container {
-    width: 17%;
     position: relative;
 }
 
@@ -62,7 +68,6 @@
     text-align: right;
 }
 
-
 .react-autosuggest__input {
     width: auto;
     height: auto;
@@ -89,8 +94,7 @@
 .react-autosuggest__container--open .react-autosuggest__suggestions-container {
     display: block;
     position: absolute;
-    min-width: 150px;
-    width: auto;
+    width: 100%;
     border: 1px solid #aaa;
     background-color: #fff;
     font-family: Helvetica, sans-serif;
@@ -131,6 +135,8 @@
 }
 
 #order-form th {
+    text-align: center;
+    vertical-align: middle;
     border-top: 3px solid;
     border-bottom: 3px solid;
 }
@@ -159,7 +165,69 @@
     margin-bottom: 5px;
 }
 
-
 #print-me {
     display: none;
+}
+
+@media (max-width: 900px) {
+    .react-autosuggest__input {
+        height: 22px !important;
+        font-size: 12px !important;
+        border-radius: 2px;
+        line-height: 2px !important;
+        padding: 2px 4px !important;
+        width: 100px;
+    }
+
+    .react-autosuggest__suggestion {
+        padding: 2px 5px;
+    }
+
+    .react-autosuggest__container--open .react-autosuggest__suggestions-container {
+        font-size: 12px;
+        border-radius: 2px;
+        width: 100px;
+    }
+
+    #order-form {
+        width: 95%;
+    }
+
+    #order-form th {
+        text-align: center;
+        vertical-align: middle;
+        border-top: 2px solid;
+        border-bottom: 2px solid;
+        font-size: 10px;
+        padding: 1px
+    }
+
+    #order-form td {
+        text-align: center;
+    }
+
+    #order-form tr {
+        padding: 2px;
+        font-size: 10px;
+    }
+
+    #cart-btn {
+        width: auto;
+        font-size: 10px;
+        padding: 2px 4px !important;
+    }
+
+    #total-caption {
+        padding-top: 6px;
+        font-weight: bold;
+        font-size: 10px;
+    }
+
+    #buttons-block {
+        margin-top: 0;
+    }
+
+    #buttons-block button {
+        margin: 0;
+    }
 }

@@ -1,17 +1,18 @@
 import React from "react";
-import { connect } from 'react-redux';
-import QuickOrderTable from '../components/QuickOrderTable';
-import PrintableTable from '../components/PrintableTable';
-import ModalLoading from '../components/ModalLoading';
-import { bindActionCreators } from 'redux';
-import * as itemActions from '../redux/modules/items';
-import objectAssign from 'object-assign';
-import { sortItemsByIdSelector } from "../selector/selectors";
-import jquery from 'jquery';
+import {connect} from "react-redux";
+import QuickOrderTable from "../components/QuickOrderTable";
+import Loading from "../components/Loading/Loading";
+import PrintableTable from "../components/PrintableTable";
+import ModalLoading from "../components/ModalLoading";
+import {bindActionCreators} from "redux";
+import * as itemActions from "../redux/modules/items";
+import objectAssign from "object-assign";
+import {sortItemsByIdSelector} from "../selector/selectors";
+import jquery from "jquery";
 import * as empty from "../constants/constants";
-import numeral from 'numeral';
-import Measure from 'react-measure';
-import Cookie from 'js-cookie';
+import numeral from "numeral";
+import Measure from "react-measure";
+import Cookie from "js-cookie";
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
 
@@ -239,17 +240,17 @@ class App extends React.Component {
     }, 100);
   };
 
-  updateCookies(){
+  updateCookies() {
     Cookie.set("quick-order", this.props.items, {expires: 7});
   }
 
   render() {
     this.updateCookies();
-    const {suggestions, now, show} = this.state;
-    const totalPrice = numeral(this.props.items.reduce((sum, item) => {
+    const {suggestions, now, show, dimensions} = this.state;
+    const {items, loading} = this.props;
+    const totalPrice = numeral(items.reduce((sum, item) => {
       return sum + (item.price * item.quantity);
     }, 0)).format('$0,0.00');
-
     return (
       <div>
         <ModalLoading
@@ -260,33 +261,35 @@ class App extends React.Component {
         />
 
         <PrintableTable
-          items={this.props.items}
+          items={items}
           totalPrice={totalPrice}
         />
-
-        <Measure onMeasure={(dimensions) => this.setState({dimensions})}>
-          <QuickOrderTable
-            items={this.props.items}
-            suggestions={suggestions}
-            onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-            onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-            getSuggestionValue={getSuggestionValue}
-            renderSuggestion={renderSuggestion}
-            onSuggestionSelected={this.onSuggestionSelected}
-            onChange={this.onQuantityChange}
-            onAutosuggestChange={this.onAutosuggestChange}
-            onBlur={this.onAutosuggestBlur}
-            onRemoveButtonClick={this.onRemoveButtonClick}
-            totalPrice={totalPrice}
-            dimensions={this.state.dimensions}
-          />
-        </Measure>
+        {loading ? <Loading className="loading" type="bubbles"/> :
+          <Measure onMeasure={(dimensions) => this.setState({dimensions})}>
+            <QuickOrderTable
+              items={items}
+              suggestions={suggestions}
+              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+              getSuggestionValue={getSuggestionValue}
+              renderSuggestion={renderSuggestion}
+              onSuggestionSelected={this.onSuggestionSelected}
+              onChange={this.onQuantityChange}
+              onAutosuggestChange={this.onAutosuggestChange}
+              onBlur={this.onAutosuggestBlur}
+              onRemoveButtonClick={this.onRemoveButtonClick}
+              totalPrice={totalPrice}
+              dimensions={dimensions}
+            />
+          </Measure> }
         <div id="buttons-block">
-          <button id="cart-btn" onClick={this.onAddButtonClick} className="btn btn-danger">Add item</button>
+          <button id="cart-btn" onClick={this.onAddButtonClick} className="btn btn-danger btn-condensed">Add item
+          </button>
           <br/>
-          <button id="cart-btn" onClick={this.addAllToCart} className="btn btn-danger">Place order</button>
+          <button id="cart-btn" onClick={this.addAllToCart} className="btn btn-danger btn-condensed">Place order
+          </button>
           <br/>
-          <button id="cart-btn" onClick={this.printData} className="btn btn-danger">Print list</button>
+          <button id="cart-btn" onClick={this.printData} className="btn btn-danger btn-condensed">Print list</button>
         </div>
       </div>
     );
@@ -295,8 +298,9 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    products: state.products,
-    items: sortItemsByIdSelector(state)
+    products: state.products.products,
+    items: sortItemsByIdSelector(state),
+    loading: state.products.loading
   };
 }
 
